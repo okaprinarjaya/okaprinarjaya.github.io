@@ -1,3 +1,8 @@
+---
+layout: post
+title: Penggunaan GNU Make dalam Kegiatan Pemrograman C
+---
+
 Penggunaan GNU Make dalam Kegiatan Pemrograman C
 ================================================
 

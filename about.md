@@ -10,4 +10,4 @@ Diluar kegiatan sebagai seorang Professional, dalam hal keilmuan saya menyukai r
 
 ### Hubungi Saya
 
-[email@domain.com](mailto:okaprinarjaya@gmail.com)
+[okaprinarjaya@gmail.com](mailto:okaprinarjaya@gmail.com)

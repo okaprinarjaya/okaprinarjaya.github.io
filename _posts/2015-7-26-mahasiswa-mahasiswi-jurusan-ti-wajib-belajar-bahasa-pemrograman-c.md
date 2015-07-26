@@ -33,7 +33,8 @@ Dan masih banyak pertanyaan-pertanyaan yang sejenis. Untuk dapat mewujudkan hal-
 
 Bahasa C adalah bahasa pemrograman dengan kategori middle level. Maksudnya adalah sebuah bahasa pemrograman yang memiliki kemampuan high level dan low level secara bersamaan. Salah satu kemampuam high level adalah adanya kontrol flow melalui penggunaan keyword `if-else`, `for`, `while` yang merupakan bahasa ekspresi yang umum dalam bahasa inggris. Sehingga memudahkan kita mengerti alur proses sebuah program. Lalu, beberapa kemampuan low level nya adalah:
 
-1. Dukungan terhadap penulisan program dengan bahasa assembly (bahasa mesin) secara inline melalui bahasa C itu sendiri. Berikut penjelasan berdasarkan wikipedia tentang kemampuan inline assembler di bahasa C
+1. Akses dan interaksi secara langsung dengan memori melalui pointer
+2. Dukungan terhadap penulisan program dengan bahasa assembly (bahasa mesin) secara inline melalui bahasa C itu sendiri. Berikut penjelasan berdasarkan wikipedia tentang kemampuan inline assembler di bahasa C
 
 > https://en.m.wikipedia.org/wiki/Inline_assembler
 > In computer programming, the inline assembler is a feature of some compilers that allows very low level code written inassembly to be 
@@ -49,7 +50,5 @@ Bahasa C adalah bahasa pemrograman dengan kategori middle level. Maksudnya adala
 > instructions are found in the SPARC VIS, Intel MMX and SSE, and Motorola Altivec instruction sets.
 >
 > 3. System calls: high-level languages rarely have a direct facility to make system calls, so assembly code is used.
-
-2. Akses dan interaksi secara langsung dengan memori melalui pointer
 
 Oleh karena itulah bahasa C sering digunakan untuk system programming. Yaitu software-software yang bersifat fondasi / core system, contoh: untuk membangun operating system, driver hardware, dan bahasa pemrograman. Dan sekaligus juga dapat digunakan untuk application programming. Yaitu membangun software-software yg bersifat aplikatif / end user. Contohnya: HTTP Server Apache, Email Server, bahkan aplikasi kasir point of sale bisa dibangun dengan bahasa C.

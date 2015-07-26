@@ -64,4 +64,4 @@ Dengan menguasai bahasa C kamu punya kemampuan untuk bisa melakukan hal-hal beri
 * Ikut berkontribusi mengembangkan desktop environment di linux seperti: KDE, dan GNome
 * Membuat database jenis NoSQL yg sederhana seperti: Redis, dan Gibson.
 
-Dan banyaakkk hal keren lagi yang membuat bangsa Indonesia makin berjaya dalam bidang Teknologi Informasi.
+Dengan menguasai bahasa C, ibaratkan dalam industri transportasi, kita tidak lagi hanya bisa **merakit** atau sekedar **karoseri (https://id.wikipedia.org/wiki/Karoseri)** saja karena mesin dibuat di jepang. Dengan menguasai bahasa C, ibaratkan dalam industri transportasi kita bisa membuat mesin sebuah kendaraan. Dan banyaakkk hal keren lagi yang membuat bangsa Indonesia makin berjaya dalam bidang Teknologi Informasi.

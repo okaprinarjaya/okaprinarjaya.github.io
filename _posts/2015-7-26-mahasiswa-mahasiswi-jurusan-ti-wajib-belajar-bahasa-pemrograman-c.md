@@ -13,7 +13,7 @@ Dengan mempelajari bahasa pemrograman C kamu dapat mengetahui bagaimana sesuatu 
 
 Dengan mengetahui bagaimana sesuatu itu bekerja kamu akan dengan mudah mengidentifikasi masalah, lalu kamu akan lebih paham dan bijaksana dalam menggunakan existing tool yang kamu pakai dalam pengembangan. Atau jika memang existing tool tidak dapat solving masalah yg dihadapi, setidaknya kamu akan lebih bijaksana dan smart dalam memilih tool baru yg akan digunakan. Tool baru bukan berarti tool yg paling terkini dalam konteks lahir / terciptanya tool itu. Tidak latah ikut-ikutan pakai tool paling baru tapi tidak memahami latar belakang masalah yg ada dibalik eksistensi sebuah tool.
 
-Contoh paling sederhana adalah bagaimana komputer menyimpan data berupa string? Bahasa-bahasa pemrograman high level akan memberikan anda kemudahan karena sudah menyembunyikan kerumitannya. Dalam bahasa pemrograman C menyimpan string tidak semudah yang dibayangkan apalagi mengolah string seperti kebutuhan concat string. Di C kamu akan berinteraksi dengan memori dan bytes untuk HANYA menyimpan dan mengolah string. Dengan memahami dan menguasai bagaimana menyimpan dan mengolah string di C maka otomatis kamu akan paham bagaimana komputer menyimpan data string.
+Contoh paling sederhana adalah bagaimana komputer menyimpan data berupa string? Bahasa-bahasa pemrograman high level akan memberikan kamu kemudahan karena sudah menyembunyikan kerumitannya. Dalam bahasa pemrograman C menyimpan string tidak semudah yang dibayangkan apalagi mengolah string seperti kebutuhan concat string. Di C kamu akan berinteraksi dengan memori dan bytes untuk HANYA menyimpan dan mengolah string. Dengan memahami dan menguasai bagaimana menyimpan dan mengolah string di C maka otomatis kamu akan paham bagaimana komputer menyimpan data string.
 
 Jika di Indonesia ini ada mahasiswa strata 1 jurusan TI / computer science atau bahkan yg strata 2 masih malas belajar bahasa pemrograman C saya akan berikan sebuah pertanyaan kpd para mahasiswa/mahasiswi jurusan TI di Indonesia. Pertanyaannya adalah:
 
@@ -52,3 +52,16 @@ Bahasa C adalah bahasa pemrograman dengan kategori middle level. Maksudnya adala
 > 3. System calls: high-level languages rarely have a direct facility to make system calls, so assembly code is used.
 
 Oleh karena itulah bahasa C sering digunakan untuk system programming. Yaitu software-software yang bersifat fondasi / core system, contoh: untuk membangun operating system, driver hardware, dan bahasa pemrograman. Dan sekaligus juga dapat digunakan untuk application programming. Yaitu membangun software-software yg bersifat aplikatif / end user. Contohnya: HTTP Server Apache, Email Server, bahkan aplikasi kasir point of sale bisa dibangun dengan bahasa C.
+
+Dengan menguasai bahasa C kamu punya kemampuan untuk bisa melakukan hal-hal berikut ini
+
+* Ikut berkontribusi mengembangkan linux kernel / menyumbangkan secuil kode walau hanya berupa tambalan security issue.
+* Membuat tools networking seperti: HAProxy load balancer, Snort Intrusion Detection System https://www.snort.org/
+* Ikut berkontribusi mengembangkan bahasa pemrograman PHP / Python / Ruby
+* Membuat embedded system di perangkat mikrokontroller
+* Membuat dongle untuk mengunci aplikasi kita. Jadi aplikasi tidak bisa dengan mudah digandakan oleh si pembeli aplikasi kita. Karena aplikasi hanya bisa running jika ada dongle terpasang di slot USB.
+* Membuat web / HTTP server seperti: Apache, Nginx
+* Ikut berkontribusi mengembangkan desktop environment di linux seperti: KDE, dan GNome
+* Membuat database jenis NoSQL yg sederhana seperti: Redis, dan Gibson.
+
+Dan banyaakkk hal keren lagi yang membuat bangsa Indonesia makin berjaya dalam bidang Teknologi Informasi.

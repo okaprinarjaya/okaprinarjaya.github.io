@@ -15,9 +15,8 @@ Dengan mengetahui bagaimana sesuatu itu bekerja kamu akan dengan mudah mengident
 
 Contoh paling sederhana adalah bagaimana komputer menyimpan data berupa string? Bahasa-bahasa pemrograman high level akan memberikan kamu kemudahan karena sudah menyembunyikan kerumitannya. Dalam bahasa pemrograman C menyimpan string tidak semudah yang dibayangkan apalagi mengolah string seperti kebutuhan concat string. Di C kamu akan berinteraksi dengan memori dan bytes untuk HANYA menyimpan dan mengolah string. Dengan memahami dan menguasai bagaimana menyimpan dan mengolah string di C maka otomatis kamu akan paham bagaimana komputer menyimpan data string.
 
-Jika di Indonesia ini ada mahasiswa strata 1 jurusan TI / computer science atau bahkan yg strata 2 masih malas belajar bahasa pemrograman C saya akan berikan sebuah pertanyaan kpd para mahasiswa/mahasiswi jurusan TI di Indonesia. Pertanyaannya adalah:
+Jika di Indonesia ini ada mahasiswa strata 1 jurusan TI / computer science atau bahkan yg strata 2 masih malas belajar bahasa pemrograman C saya akan berikan sebuah pertanyaan kepada para mahasiswa/mahasiswi jurusan TI di Indonesia. Pertanyaannya adalah:
 
-"
 Mengapa kalian selalu mengajukan pertanyaan-pertanyaan ini? :
 
 1. Kapan yaa Indonesia punya operating system buatan sendiri?
@@ -27,7 +26,7 @@ Mengapa kalian selalu mengajukan pertanyaan-pertanyaan ini? :
 3. Kapan yaa ada bahasa pemrograman buatan Indonesia? Sudah ada sih..tapi..
 
 4. Ada atau tidak RDBMS seperti MySql yang dibuat oleh orang Indonesia?
-"
+
 
 Dan masih banyak pertanyaan-pertanyaan yang sejenis. Untuk dapat mewujudkan hal-hal yang ada di dalam pertanyaan-pertanyaan itu maka diperlukan kemampuan pemrograman dengan bahasa C dan dibarengi dengan fondasi computer science yang kuat. Dalam proses belajar C secara paralel konsep-konsep dan teori-teori dalam computer science menjadi diterapkan.
 
@@ -40,9 +39,7 @@ Bahasa C adalah bahasa pemrograman dengan kategori middle level. Maksudnya adala
 > In computer programming, the inline assembler is a feature of some compilers that allows very low level code written inassembly to be 
 > embedded in a high level language like C or Ada. This embedding is usually done for one of three reasons:
 > 
-> 1. Optimization: when assembly language is inlined for optimization, the most performance-sensitive parts of an algorithm are replaced by 
-> hand-written assembly. This allows the programmer to use the full extent of his ingenuity, without being limited by a compiler's 
-> higher-level constructs.
+> 1. Optimization: when assembly language is inlined for optimization, the most performance-sensitive parts of an algorithm are replaced by hand-written assembly. This allows the programmer to use the full extent of his ingenuity, without being limited by a compiler's higher-level constructs.
 >
 > 2. Access to processor specific instructions: some processors offer special instructions, such as Compare and Swap and Test and Set 
 > — instructions which may be used to construct semaphores or other synchronization and locking primitives. Nearly every modern 

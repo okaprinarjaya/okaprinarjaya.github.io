@@ -17,7 +17,7 @@ Berikut tampilan packaging dari microcontroller ATMega328p :
 ![MCU Packaging](http://res.cloudinary.com/okaprinarjaya/image/upload/c_scale,w_800/v1466608123/okadiary/ATMEGA328P-PU.jpg)
 
 ## Registers
-Register adalah suatu lokasi / tempat di dalam MCU atau Prosesor yang berfungsi sebagai penyimpan nilai-nilai dan memiliki. Ada banyak register di dalam MCU dan masing-masing register memiliki memory address yang **unik** dan **statik**. Dan masing-masing register juga punya "pelanggan" nya masing-masing. Oleh karena itulah mengapa ada yang namanya **I/O Registers**, yang mana merupakan sekumpulan register yang bertugas menampung nilai dan mengirim nilai dari dan ke I/O yg bersangkutan. 
+Register adalah suatu lokasi / tempat di dalam MCU atau Prosesor yang berfungsi sebagai penyimpan nilai-nilai. Ada banyak register di dalam MCU dan masing-masing register memiliki memory address yang **unik** dan **statik**. Dan masing-masing register juga punya "pelanggan" nya masing-masing. Oleh karena itulah mengapa ada yang namanya **I/O Registers**, yang mana merupakan sekumpulan register yang bertugas menampung nilai dan mengirim nilai dari dan ke I/O yg bersangkutan. 
 
 Tentu saja ada juga register yang "pelanggan" nya adalah si programmer (kita) itu sendiri, disebut dengan **General Purpose Register**. Kita bisa menyimpan nilai apa saja di dalam General Purpose Register dan melakukan proses-proses selanjutnya terhadap nilai yang tersimpan di dalam register tersebut menggunakan bagian-bagian prosesor yg lain, contoh: ALU (Arithmetic Logic Unit) .
 

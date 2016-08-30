@@ -19,6 +19,16 @@ Berikut tampilan packaging dari microcontroller ATMega328p :
 ## Registers
 Register adalah suatu lokasi / tempat di dalam MCU atau Prosesor yang berfungsi sebagai penyimpan nilai-nilai. Ada banyak register di dalam MCU dan masing-masing register memiliki memory address yang **unik** dan **statik**. Dan masing-masing register juga punya "pelanggan" nya masing-masing. Oleh karena itulah mengapa ada yang namanya **I/O Registers**, yang mana merupakan sekumpulan register yang bertugas menampung nilai dan mengirim nilai dari dan ke I/O yg bersangkutan. 
 
-Tentu saja ada juga register yang "pelanggan" nya adalah si programmer (kita) itu sendiri, disebut dengan **General Purpose Register**. Kita bisa menyimpan nilai apa saja di dalam General Purpose Register dan melakukan proses-proses selanjutnya terhadap nilai yang tersimpan di dalam register tersebut menggunakan bagian-bagian prosesor yg lain, contoh: ALU (Arithmetic Logic Unit) .
+Tentu saja ada juga register yang "pelanggan" nya adalah si programmer (kita) itu sendiri, disebut dengan **General Purpose Register**. Kita bisa menyimpan nilai apa saja di dalam General Purpose Register dan melakukan proses-proses selanjutnya terhadap nilai yang tersimpan di dalam register tersebut menggunakan bagian-bagian prosesor yg lain, contoh: ALU (Arithmetic Logic Unit).Tidak hanya MCU yang memiliki register, prosesor (Intel, AMD, dan lain-lain) pun juga memiliki register.
 
-Tidak hanya MCU yang memiliki register, prosesor (Intel, AMD, dan lain-lain) pun juga memiliki register. Tapi jika sudah berbicara di level prosesor, tentunya jumlah register yang adalam prosesor jumlahnya amat sangat banyak.
+### Jenis - jenis Register
+
+#### I/O Registers
+Adalah register-register yang menampung nilai dan mengirim nilai dari dan ke peripheral yang bersangkutan dalam rangka "menggerakkan" peripheral yang bersangkutan (Timers, USART, SPI, TWI, ADC, dan lain-lain). Berdasarkan datasheet di Figure 8.3  ATMega328P memiliki **64 I/O Registers** dengan alamat memori mulai dari **0x0020** s/d **0x005F**
+
+#### General Purpose (GP) Registers
+Adalah register-register yang sifatnya bebas, dapat digunakan untuk menyimpan data untuk keperluan apa saja. Dan di arsitektur AVR beberapa operasi seperti operasi aritmatika, dan pembandingan hanya bisa dilakukan di GP Registers. Berdasarkan datasheet di Figure 8.3 ATMega328P memiliki **32 General Purpose Registers** dengan alamat memori mulai dari **0x0000** s/d **0x001F**. 32 GP Register diberi nama **R0** s/d **R31**.
+
+#### Extended I/O Registers
+Jumlahnya ada **160** dan berikut penjelasan dalam bahasa inggris:
+As the AVRs grew and more peripherals were added, in and out could not serve enough I/O locations. Additional I/O registers are placed above the I/O registers, but are treated like normal SRAM.

@@ -27,7 +27,7 @@ Tentu saja ada juga register yang "pelanggan" nya adalah si programmer (kita) it
 Adalah register-register yang menampung nilai dan mengirim nilai dari dan ke peripheral yang bersangkutan dalam rangka "menggerakkan" peripheral yang bersangkutan (Timers, USART, SPI, TWI, ADC, dan lain-lain). Berdasarkan datasheet di Figure 8.3  ATMega328P memiliki **64 I/O Registers** dengan alamat memori mulai dari **0x0020** s/d **0x005F**
 
 #### General Purpose (GP) Registers
-Adalah register-register yang sifatnya bebas, dapat digunakan untuk menyimpan data untuk keperluan apa saja. Dan di arsitektur AVR beberapa operasi seperti operasi aritmatika, dan pembandingan hanya bisa dilakukan di GP Registers. Berdasarkan datasheet di Figure 8.3 ATMega328P memiliki **32 General Purpose Registers** dengan alamat memori mulai dari **0x0000** s/d **0x001F**. 32 GP Register diberi nama **R0** s/d **R31**.
+Adalah register-register yang sifatnya bebas, dapat digunakan untuk menyimpan data untuk keperluan apa saja. Dan di arsitektur AVR beberapa operasi seperti operasi aritmatika, dan pembandingan hanya bisa dilakukan di GP Registers. Berdasarkan datasheet di Figure 8.3 ATMega328P memiliki **32 General Purpose Registers** dengan alamat memori mulai dari **0x0000** s/d **0x001F** dan masing-masing register berkapasitas 8 bit. 32 GP Register diberi nama **R0** s/d **R31**.
 
 #### Extended I/O Registers
 Jumlahnya ada **160** dan berikut penjelasan dalam bahasa inggris:

@@ -26,10 +26,14 @@ Adalah sebuah register yang berfungsi sebagai penunjuk (pointer) yang selalu men
 Tumpukan-tumpukan diproses menggunakan aturan **LIFO (Last In First Out)**, dan instruksi **POP** untuk mengambil data dari 
 tumpukan dan instruksi **PUSH** untuk menambahkan data ke tumpukan.
 
+![Stack Pointer Register](https://github.com/okaprinarjaya/okaprinarjaya.github.io/blob/master/images/call-stack/SP1rsz.png)
+
 ### Stack Frame
 Adalah tumpukan yang sudah di-kelompok-kelompok-an. Kelompok 1 dengan jumlah sekian tumpukan adalah stack frame milik fungsi 
 `main()`, Kelompok 2 dengan jumlah sekian tumpukan adalah stack frame untuk fungsi `tambah()`, Kelompok 3 dengan jumlah sekian 
 tumpukan adalah stack frame dari fungsi `kurang()` dan begitu seterusnya.
+
+![Stack Frame](https://github.com/okaprinarjaya/okaprinarjaya.github.io/blob/master/images/call-stack/StackFrameRsz.png)
 
 ### Frame Pointer (FP) / Base Pointer (BP) Register
 Mirip halnya seperti SP Register, FP / BP Register adalah sebuah register yang berfungsi sebagai penunjuk yang selalu menunjuk pada tumpukkan paling atas dari stack frame sebuah fungsi yang sudah selesai eksekusinya. 

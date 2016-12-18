@@ -42,6 +42,8 @@ Sederhananya, Jika posisi tunjuk FP / BP Register sudah berubah, itu artinya ada
 FP / BP Register  menyediakan penunjuk / referer yang stabil untuk mengakses parameter - parameter dan variabel - variabel lokal 
 dari fungsi - fungsi yang ada secara ter-isolasi per fungsi. 
 
+![Frame Pointer Register](https://github.com/okaprinarjaya/okaprinarjaya.github.io/blob/master/images/call-stack/FPRsz1.png)
+
 ### Return Address
 Return Address adalah data yang berisikan alamat memory dari instruksi yang harus dieksekusi selanjutnya. Return Address juga 
 adalah merupakan data yang disimpan di tumpukkan.
@@ -55,3 +57,5 @@ yang berada tepat di bawah Stack Frame yang paling baru.
 Diperlukan penyimpanan nilai FP/BP Register sebelumnya ke sebuah Stack Frame adalah agar bisa melakukan nested function call. 
 Tanpa adanya penyimpanan Previous FP/BP Register ke tumpukan, prosesor tidak dapat mengetahui harus lompat ke instruksi mana 
 selanjutnya saat melakukan nested function call. 
+
+## Studi Kasus / Praktek

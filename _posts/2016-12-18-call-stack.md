@@ -19,7 +19,7 @@ Belajar tentang Call Stack, maka muncul bagian - bagian berikut:
 * Stack Frame
 * Frame Pointer (FP) / Base Pointer (BP) Register
 * Return Address
-* Previous Saved FP / BP Register
+* Saved Previous FP / BP Register
 
 ### Stack Pointer (SP) Register
 Adalah sebuah register yang berfungsi sebagai penunjuk (pointer) yang selalu menunjuk (pointing) pada tumpukan paling atas. 
@@ -32,21 +32,22 @@ Adalah tumpukan yang sudah di-kelompok-kelompok-an. Kelompok 1 dengan jumlah sek
 tumpukan adalah stack frame dari fungsi `kurang()` dan begitu seterusnya.
 
 ### Frame Pointer (FP) / Base Pointer (BP) Register
-Mirip halnya seperti SP Register, FP Register adalah sebuah register yang berfungsi sebagai penunjuk yang selalu menunjuk pada 
-lokasi yang permanen / tetap (fixed) dari stack frame sebuah fungsi yang sedang mendapatkan gilirannya berjalan / aktif. 
+Mirip halnya seperti SP Register, FP / BP Register adalah sebuah register yang berfungsi sebagai penunjuk yang selalu menunjuk pada tumpukkan paling atas dari stack frame sebuah fungsi yang sudah selesai eksekusinya. 
 
-Sederhananya, Posisi Stack Frame paling atas adalah Stack Frame dari fungsi yang sedang (current) berjalan / aktif. Frame 
-Pointer menunjuk pada tumpukan paling atas sebuah Stack Frame. Frame pointer menyediakan penunjuk / referer yang stabil untuk 
-mengakses parameter - parameter dan variabel - variabel lokal dari fungsi - fungsi yang ada secara ter-isolasi per fungsi. 
+Sederhananya, Jika posisi tunjuk FP / BP Register sudah berubah, itu artinya adalah terbentuk lagi satu stack frame baru. Posisi 
+FP / BP Register  menyediakan penunjuk / referer yang stabil untuk mengakses parameter - parameter dan variabel - variabel lokal 
+dari fungsi - fungsi yang ada secara ter-isolasi per fungsi. 
 
 ### Return Address
-Return Address adalah data tumpukan yang berisikan alamat memory dari instruksi yang harus dieksekusi selanjutnya. Return Address juga adalah merupakan data yang disimpan di tumpukkan.
+Return Address adalah data yang berisikan alamat memory dari instruksi yang harus dieksekusi selanjutnya. Return Address juga 
+adalah merupakan data yang disimpan di tumpukkan.
 
-### Previous Saved FP / BP Register
-Seringkali disebut Base Pointer Register adalah penanda jejak satu fungsi sudah selesai dijalankan dan pada saat yang sama juga 
-menjadi penanda terbentuknya satu Stack Frame. Isi dari BP Register ini adalah copy dari nilai SP Register. Lalu Nilai dari BP 
-Register di-PUSH / disimpan ke tumpukkan. 
+### Saved Previous FP / BP Register Data
+Adalah **data** yang posisinya di tumpukan paling atas dari sebuah Stack Frame yang berfungsi sebagai penanda jejak fungsi 
+paling akhir yang  sudah selesai dijalankan, dan pada saat yang sama juga menjadi penanda terbentuknya satu Stack Frame baru. 
+Isi dari data Saved Previous FP/BP Register ini adalah nilai dari FP/BP Register Stack Frame **sebelumnya** atau Stack Frame 
+yang berada tepat di bawah Stack Frame yang paling baru. 
 
-Diperlukan penyimpanan nilai BP Register ke sebuah Stack Frame adalah agar bisa melakukan nested function call. Tanpa adanya 
-penyimpanan BP Register ke tumpukan, prosesor tidak dapat mengetahui harus lompat ke instruksi mana selanjutnya saat melakukan 
-nested function call. 
+Diperlukan penyimpanan nilai FP/BP Register sebelumnya ke sebuah Stack Frame adalah agar bisa melakukan nested function call. 
+Tanpa adanya penyimpanan Previous FP/BP Register ke tumpukan, prosesor tidak dapat mengetahui harus lompat ke instruksi mana 
+selanjutnya saat melakukan nested function call. 

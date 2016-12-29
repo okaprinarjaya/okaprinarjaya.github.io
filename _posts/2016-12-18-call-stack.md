@@ -160,16 +160,74 @@ prologue meng-inisiasi tumpukkan dan mengisi tumpukkan dengan data-data: Jumlah 
 fungsi `main()` sebelum fungsi `main()` dijalankan dan return address.
 
 ![Stack Init](http://res.cloudinary.com/okaprinarjaya/image/upload/v1482869707/okadiary/call-stack/cs1.png)
+<br />*Gambar 1*
 
 ```asm
 push   %rbp
-mov    %rsp,%rbp
+mov    %rsp, %rbp
 ```
 
 Dengan dijalankannya instruksi diatas, makan susunan stack menjadi seperti berikut: 
 
 ![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1482869707/okadiary/call-stack/cs2.png)
+<br >*Gambar 2*
 
-Dan dengan ter-PUSH nya RBP ke stack, maka terbentuklah satu stack frame baru. Seperti penjelasan sebelumnya diatas, RBP adalah 
-FP (Frame Pointer). 
+Dan pada gambar 2 dengan dijalankan instruksi PUSH RBP ke stack, maka terbentuklah satu stack frame baru. Seperti penjelasan 
+sebelumnya diatas, RBP adalah FP (Frame Pointer). 
+
+```asm
+sub    $0x20, %rsp
+```
+![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483036507/okadiary/call-stack/cs3.png)
+<br />*Gambar 3*
+
+```asm
+mov    %edi, -0x14(%rbp)
+mov    %rsi, -0x20(%rbp)
+mov    $0x2, %esi
+mov    $0x28,%edi
+callq  0x4004ed
+```
+![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483037077/okadiary/call-stack/cs4.png)
+<br />*Gambar 4*
+
+Instruksi `callq` mem-PUSH return address ke tumpukan lalu berlanjut melompat ke dan menjalankan instruksi selanjutnya yaitu
+label `add` . 
+
+Pada file kumpulan perintah-perintah, anda akan diminta untuk menjalankan perintah `stepi` di program berulangkali sampai 
+mencapai instruksi `callq  0x4004ed` . Jika instruksi `callq  0x4004ed` sudah dijalankan maka kamu udah berada di dalam urutan 
+instruksi-instruksi untuk label / function `add()` . Untuk melihat instruksi-instruksiny jalankan perintah `disas` dengan 
+outputnya seperti berikut:
+
+```text
+Dump of assembler code for function add:
+=> 0x00000000004004ed <+0>:	push   %rbp
+   0x00000000004004ee <+1>:	mov    %rsp,%rbp
+   0x00000000004004f1 <+4>:	mov    %edi,-0x14(%rbp)
+   0x00000000004004f4 <+7>:	mov    %esi,-0x18(%rbp)
+   0x00000000004004f7 <+10>:	mov    -0x18(%rbp),%eax
+   0x00000000004004fa <+13>:	mov    -0x14(%rbp),%edx
+   0x00000000004004fd <+16>:	add    %edx,%eax
+   0x00000000004004ff <+18>:	mov    %eax,-0x4(%rbp)
+   0x0000000000400502 <+21>:	mov    -0x4(%rbp),%eax
+   0x0000000000400505 <+24>:	pop    %rbp
+   0x0000000000400506 <+25>:	retq   
+End of assembler dump.
+```
+```asm
+push   %rbp
+mov    %rsp, %rbp
+```
+![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483038105/okadiary/call-stack/cs5.png)
+<br />*Gambar 5*
+
+```asm
+mov    %edi, -0x14(%rbp)
+mov    %esi, -0x18(%rbp)
+mov    -0x18(%rbp), %eax
+mov    -0x14(%rbp),%edx
+add    %edx,%eax
+```
+![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483038629/okadiary/call-stack/cs6.png)
+<br />*Gambar 6*
 

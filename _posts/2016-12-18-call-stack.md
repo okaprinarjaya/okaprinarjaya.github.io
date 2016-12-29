@@ -162,12 +162,14 @@ fungsi `main()` sebelum fungsi `main()` dijalankan dan return address.
 ![Stack Init](http://res.cloudinary.com/okaprinarjaya/image/upload/v1482869707/okadiary/call-stack/cs1.png)
 <br />*Gambar 1*
 
+<hr />
+
 ```asm
 push   %rbp
 mov    %rsp, %rbp
 ```
 
-Dengan dijalankannya instruksi diatas, makan susunan stack menjadi seperti berikut: 
+Dengan dijalankannya instruksi diatas, makan susunan stack menjadi seperti gambar 2 berikut: 
 
 ![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1482869707/okadiary/call-stack/cs2.png)
 <br >*Gambar 2*
@@ -175,11 +177,15 @@ Dengan dijalankannya instruksi diatas, makan susunan stack menjadi seperti berik
 Dan pada gambar 2 dengan dijalankan instruksi PUSH RBP ke stack, maka terbentuklah satu stack frame baru. Seperti penjelasan 
 sebelumnya diatas, RBP adalah FP (Frame Pointer). 
 
+<hr />
+
 ```asm
 sub    $0x20, %rsp
 ```
 ![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483036507/okadiary/call-stack/cs3.png)
 <br />*Gambar 3*
+
+<hr />
 
 ```asm
 mov    %edi, -0x14(%rbp)
@@ -214,12 +220,16 @@ Dump of assembler code for function add:
    0x0000000000400506 <+25>:	retq   
 End of assembler dump.
 ```
+<hr />
+
 ```asm
 push   %rbp
 mov    %rsp, %rbp
 ```
 ![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483038105/okadiary/call-stack/cs5.png)
 <br />*Gambar 5*
+
+<hr />
 
 ```asm
 mov    %edi, -0x14(%rbp)
@@ -231,3 +241,4 @@ add    %edx,%eax
 ![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483038629/okadiary/call-stack/cs6.png)
 <br />*Gambar 6*
 
+<hr />

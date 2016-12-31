@@ -242,3 +242,16 @@ add    %edx,%eax
 <br />*Gambar 6*
 
 <hr />
+
+```asm
+mov    %eax, -0x4(%rbp)
+mov    -0x4(%rbp), %eax
+pop    %rbp
+retq
+```
+![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483193828/okadiary/call-stack/cs7.png)
+
+Dengan dijalankannya instruksi `pop %rbp` maka bergeserlah posisi penunjukkan dari SP dan BP Register. Dengan dijalankannya 
+instruksi `retq`, maka prosesor lompat kembali ke function / label `main` .
+
+<hr />

@@ -294,7 +294,7 @@ leaveq
 retq
 ```
 ![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483241453/okadiary/call-stack/cs10.png)
-<br />*Gambar 9*
+<br />*Gambar 10*
 
 Berakhir sudah execution flow yang memanfaatkan stack di memory (RAM) sebagai media penyimpanan variabel-variabel lokal, 
 parameter-parameter fungsi, dan return value fungsi. 

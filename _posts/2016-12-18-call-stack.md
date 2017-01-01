@@ -250,8 +250,54 @@ pop    %rbp
 retq
 ```
 ![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483193828/okadiary/call-stack/cs7.png)
+<br />*Gambar 7*
 
 Dengan dijalankannya instruksi `pop %rbp` maka bergeserlah posisi penunjukkan dari SP dan BP Register. Dengan dijalankannya 
-instruksi `retq`, maka prosesor lompat kembali ke function / label `main` .
+instruksi `retq`, maka execution flow lompat kembali ke function / label `main` .
+
+Jika kamu jalankan perintah `disas` lagi di program `gdb` maka susunan assembly / instruction sets nya saat lompat kembali lagi 
+ke label `main` adalah seperti berikut:
+
+```asm
+Dump of assembler code for function main:
+   .
+   .
+   .
+   0x0000000000400520 <+25>:	callq  0x4004ed <add>
+=> 0x0000000000400525 <+30>:	mov    %eax,-0x4(%rbp)
+   0x0000000000400528 <+33>:	mov    $0x0,%eax
+   0x000000000040052d <+38>:	leaveq 
+   0x000000000040052e <+39>:	retq   
+End of assembler dump.
+```
+Maka saat execution flow sudah kembali lagi ke `main` maka stack menjadi seperti berikut:
+
+![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483241016/okadiary/call-stack/cs8.png)
+<br />*Gambar 8*
 
 <hr />
+
+Ok, mari lanjutkan execution flow nya
+
+```asm
+mov    %eax, -0x4(%rbp)
+mov    $0x0, %eax
+leaveq 
+```
+
+![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483241329/okadiary/call-stack/cs9.png)
+<br />*Gambar 9*
+
+<hr />
+
+```asm
+retq
+```
+![Stack](http://res.cloudinary.com/okaprinarjaya/image/upload/v1483241453/okadiary/call-stack/cs10.png)
+<br />*Gambar 9*
+
+Berakhir sudah execution flow yang memanfaatkan stack di memory (RAM) sebagai media penyimpanan variabel-variabel lokal, 
+parameter-parameter fungsi, dan return value fungsi. 
+
+## Penutup
+Jangan melupakan / mengabaikan Computer Science. 

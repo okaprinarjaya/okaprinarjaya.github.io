@@ -9,7 +9,21 @@ Daftar Isi
 * [Pengantar](#pengantar)
 * [Instalasi webpack](#instalasi-webpack)
 * [Sekilas cara pemakaian](#sekilas-cara-pemakaian)
-    * [1. Bundling dari coding yang menggunakan keyword import](#bundling-dari-coding-yang-menggunakan-keyword-import)
+    * [1. Bundling dari coding yang menggunakan keyword import](#1-bundling-dari-coding-yang-menggunakan-keyword-import)
+    * [2. Bundling dari banyak file terpisah-pisah menjadi bundle-test2.js](#2-bundling-dari-banyak-file-terpisah-pisah-menjadi-bundle-test2-js)
+* [Konsep dasar webpack](#konsep-dasar-webpack)
+    * [Context dan Entry](#context-dan-entry)
+        * [Context](#context)
+        * [Entry](#entry)
+    * [Output](#output)
+    * [Loaders](#loaders)
+    * [Plugins](#plugins)
+* [Zoom-IN sedikit untuk Entry - Output, dan Loaders - Plugins](#zoom-in-sedikit-untuk-entry-output-dan-loaders-plugins)
+    * [Entry - Output Zoom-IN](#entry-output-zoom-in)
+    * [Loaders - Plugins Zoom-IN](#loaders-plugins-zoom-in)
+        * [Studi Kasus - Men-transpile (transformation compile) LESS menjadi CSS](#studi-kasus-men-transpile-transformation-compile-less-menjadi-css)
+        * [Studi Kasus - Meminifikasi hasil bundling](#studi-kasus-meminifikasi-hasil-bundling)
+* [Kesimpulan](#kesimpulan)
 
 ## Pengantar
 Kata "Snorkling" disini saya pakai sebagai kiasan yang berarti mempelajari dan menggunakan webpack hanya sampai pada level dasar dan 
@@ -17,7 +31,7 @@ pemula atau cukup tahu permukaan-permukaan nya saja. Tulisan ini akan membahas c
 penerapan / implementasi dari konsep webpack. Semoga dengan adanya tulisan ini, saya pribadi dapat dengan mudah menerapkan webpack 
 dimana saja karena semua tata cara instalasi, konfigurasi, dan penggunaan tercatat disini semua.
 
-## Instalasi Webpack
+## Instalasi webpack
 Sebelum memulai instalasi webpack, pastikan kamu sudah install versi paling fresh Node.js terlebih dahulu. Release Node.js LTS yang 
 palingbaru bisa menjadi pilihan yang ideal dan direkomendasikan. Karena kamu akan menemui banyak masalah dengan versi yang lebih lama 
 seperti beberapa fungsionalitas yang hilang atau beberapa package terkait (dependency) yang belum didukung di versi lama.
@@ -85,7 +99,7 @@ Cara menjalankan package dengan ketersediaan lokal adalah sebagai berikut: `node
 ## Sekilas cara pemakaian
 Supaya tidak penasaran, setelah instalasi, bagaimana cara memakainya?
 
-### 1. Bundling dari coding yang menggunakan keyword import
+### 1. Bundling dari coding yang menggunakan keyword `import`
 Buat direktori baru bernama `src` atau `app` atau `apa-aja-deh` di dalam direktori utama project kita yang mungkin kamu beri nama 
 `bebas-aja-deh` sehingga menjadi `bebas-aja-deh/src`. 
 
@@ -191,7 +205,7 @@ Selanjutnya, jalankan webpack untuk memulai proses bundling dengan menjalankan p
 node_modules/.bin/webpack
 ```
 
-## Konsep dasar Webpack
+## Konsep dasar webpack
 Webpack adalah sebuah pembundel (bundler) untuk aplikasi-aplikasi javascript modern. Tentunya kamu tidak asing / pastinya tahu apa 
 itu pem-bundel-an (bundling). Sederhananya, asumsikan ada beberapa file javascript yaitu: `abc.js`, `def.js`, `ghi.js`. 3 file 
 javascript itu akan digabung menjadi satu file bundle dengan nama `alphabet.js`. Selain menghandle bundling file-file javascript, 

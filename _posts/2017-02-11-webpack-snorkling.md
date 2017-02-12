@@ -3,6 +3,14 @@ layout: post
 title: Webpack Snorkling
 ---
 
+Daftar Isi
+==========
+
+* [Pengantar](#pengantar)
+* [Instalasi webpack](#instalasi-webpack)
+* [Sekilas cara pemakaian](#sekilas-cara-pemakaian)
+    * [1. Bundling dari coding yang menggunakan keyword import](#bundling-dari-coding-yang-menggunakan-keyword-import)
+
 ## Pengantar
 Kata "Snorkling" disini saya pakai sebagai kiasan yang berarti mempelajari dan menggunakan webpack hanya sampai pada level dasar dan 
 pemula atau cukup tahu permukaan-permukaan nya saja. Tulisan ini akan membahas cara instalasi webpack, sedikit konsep webpack, dan 
@@ -77,14 +85,15 @@ Cara menjalankan package dengan ketersediaan lokal adalah sebagai berikut: `node
 ## Sekilas cara pemakaian
 Supaya tidak penasaran, setelah instalasi, bagaimana cara memakainya?
 
-### 1. Bundling dari coding yang menggunakan keyword `import`
+### 1. Bundling dari coding yang menggunakan keyword import
 Buat direktori baru bernama `src` atau `app` atau `apa-aja-deh` di dalam direktori utama project kita yang mungkin kamu beri nama 
 `bebas-aja-deh` sehingga menjadi `bebas-aja-deh/src`. 
 
 Buatlah direktori bernama `test1` di dalam direktori `src` sehingga menjadi `src/test1`. Lalu di dalam direktori `src/test1` buatlah 4
 file javascript berikut: 
 
-#### `abc.js`
+`abc.js`
+
 ```js
 export default function abc()
 {
@@ -92,7 +101,8 @@ export default function abc()
 }
 ```
 
-#### `def.js`
+`def.js`
+
 ```js
 export default function def()
 {
@@ -100,7 +110,8 @@ export default function def()
 }
 ```
 
-#### `ghi.js`
+`ghi.js`
+
 ```js
 export default function ghi()
 {
@@ -108,7 +119,8 @@ export default function ghi()
 }
 ```
 
-#### `utama.js`
+`utama.js`
+
 ```js
 import abc from "./abc"
 import def from "./def"
@@ -146,7 +158,7 @@ Untuk melihat hasilnya, silahkan check di `bebas-aja-deh/dist` terbentuk file be
 otomatis oleh webpack. Dan kamu bisa coba untuk menjalankan `bundle-test1.js` dengan perintah `node dist/bundle-test1.js`. Dan mari 
 lanjut ke contoh selanjutnya.
 
-### 2. Bundling dari `abc.js`, `def.js`, `ghi.js` menjadi `bundle-test2.js`
+### 2. Bundling dari banyak file terpisah-pisah menjadi `bundle-test2.js`
 Mirip seperti pada contoh pemakaian pertama, kamu tinggal buat direktori `test2` di dalam direktori `src`. Lalu, kamu copy 3 file 
 yang sudah pernah kamu buat sebelumnya yaitu: `abc.js`, `def.js`, `ghi.js` ke direktori `src/test2`.
 
@@ -292,10 +304,128 @@ dari `jkl.js`, `mno.js`, `pqr.js`.
 
 ### Loaders - Plugins Zoom-IN
 
-#### Studi Kasus - Men-transpile (transformation compile) file LESS menjadi file CSS
-Untuk pemanfaatan Loaders, Langsung saja dengan contoh kasus yang real. Untuk dapat menjalankan contoh kasus ini, maka kamu perlu 
-install beberapa library tambahan. Langsung saja diinstall seperti berikut:
+#### Studi Kasus - Men-transpile (transformation compile) LESS menjadi CSS
+Untuk pemanfaatan Loaders - Plugins, Langsung saja dengan contoh kasus yang real. Untuk dapat menjalankan contoh kasus ini, maka kamu 
+perlu install beberapa library tambahan. Langsung saja diinstall seperti berikut:
 
 ```sh
-
+npm install css-loader --save-dev
+npm install https://github.com/webpack-contrib/extract-text-webpack-plugin/tarball/v2.0.0-rc.3 --save-dev
+npm install less-loader less --save-dev
 ```
+
+Pastikan semua library tambahan diatas terinstall dengan baik. Jika sudah terinstall, maka mari kita buat beberapa file LESS di struktur
+direktori kita. 
+
+Masih menggunakan direktori project kita yang sebelumnya, buatlah direktori bernama `less` di `bebas-aja-deh/src/` sehingga menjadi 
+`bebas-aja-deh/src/less`. Buatlah beberapa file less di `bebas-aja-deh/src/less/` misalkan seperti berikut ini:
+
+`lesscelana.less`
+
+```css
+@bloody: #D70F22;
+@textWhite: #FFFFFF;
+@base: 960px;
+
+body {
+    background: @bloody;
+    color: @textWhite;
+}
+
+#main {
+    .box {
+        width: @base / 3;
+
+        h3 {
+            color: @textWhite;
+        }
+    }
+}
+```
+
+silahkan berkreasi sendiri untuk beberap file less lainnya seperti: `celanagoloh.less` , dan `ngeless_wae_koe.less` dimana isinya 
+terserah anda yg penting sesuai aturan LESS.
+
+Setelah kamu selesai menyiapkan beberapa file LESS maka lanjutkan dengan membuat file `webpack.config.js` dengan isinya seperti berikut
+ini:
+
+```js
+const path = require("path")
+const webpack = require("webpack")
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+module.exports = {
+    context: path.resolve(__dirname, "./src"),
+    entry: {
+        cssone: ["./less/lesscelana.less", "./less/celanagoloh.less", "./less/ngeless_wae_koe.less"],
+        csstwo: ["./less/lesscelana.less", "./less/celanagoloh.less", "./less/ngeless_wae_koe.less"],
+        cssthree: ["./less/lesscelana.less", "./less/celanagoloh.less", "./less/ngeless_wae_koe.less"]
+    },
+    output: {
+        path: path.resolve(__dirname, "./dist/css-bundle"),
+        filename: "[name].unused.please-delete.js"
+    },
+    module: {
+        rules: [
+            {
+                test: /\.less$/,
+                use: ExtractTextPlugin.extract(["css-loader", "less-loader"])
+            }
+        ]
+    },
+    plugins: [
+        new ExtractTextPlugin("[name].styles.css")
+    ]
+}
+```
+
+Lanjut jalankan proses bundling dengan perintah: `node_modules/.bin/webpack` Yaayyy! hasilnya kamu bisa lihat di `dist/css-bundle` ada 3
+file CSS dimana masing-masing dari 3 file CSS itu merupakan penggabungan dari beberapa file. Cool! Do you have any idea with this?
+
+#### Studi Kasus - Meminifikasi hasil bundling
+Untuk dapat meminifikasi hasil bundling, maka kamu perlu install webpack plugin bernama `optimize-css-assets-webpack-plugin` dan seperti 
+biasa install dengan cara `npm install optimize-css-assets-webpack-plugin --save-dev`. Dan ubah file `webpack.config.js` menjadi seperti
+berikut dibawah ini:
+
+```js
+const path = require("path")
+const webpack = require("webpack")
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+module.exports = {
+    context: path.resolve(__dirname, "./src"),
+    entry: {
+        cssone: ["./less/lesscelana.less", "./less/celanagoloh.less", "./less/ngeless_wae_koe.less"],
+        csstwo: ["./less/lesscelana.less", "./less/celanagoloh.less", "./less/ngeless_wae_koe.less"],
+        cssthree: ["./less/lesscelana.less", "./less/celanagoloh.less", "./less/ngeless_wae_koe.less"]
+    },
+    output: {
+        path: path.resolve(__dirname, "./dist/css-bundle"),
+        filename: "[name].unused.please-delete.js"
+    },
+    module: {
+        rules: [
+            {
+                test: /\.less$/,
+                use: ExtractTextPlugin.extract(["css-loader", "less-loader"])
+            }
+        ]
+    },
+    plugins: [
+        new ExtractTextPlugin("[name].styles.css"),
+        new OptimizeCssAssetsPlugin({
+            cssProcessor: require("cssnano"),
+            cssProcessorOptions: { discardComments: {removeAll: true } },
+            canPrint: true
+        })
+    ]
+}
+```
+
+## Kesimpulan
+Pekerjaan memilah-milah file assets bukan merupakan pekerjaan yang ringan karena banyak file yang harus kita pilah. Webpack dapat 
+membantu kita memilah-milah file assets dengan mudah dan cepat.
+
+Baik, berakhir sudah tulisan tentang webpack ini. Semoga tulisan ini bermanfaat bagi saya sendiri, karena jika saya lupa bagaimana 
+implementasi webpack, maka saya tinggal buka tulisan ini saja hehehe.

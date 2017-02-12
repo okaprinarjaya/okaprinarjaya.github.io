@@ -77,7 +77,7 @@ Cara menjalankan package dengan ketersediaan lokal adalah sebagai berikut: `node
 ## Sekilas cara pemakaian
 Supaya tidak penasaran, setelah instalasi, bagaimana cara memakainya?
 
-### Bundling dari coding yang menggunakan keyword `import`
+### 1. Bundling dari coding yang menggunakan keyword `import`
 Buat direktori baru bernama `src` atau `app` atau `apa-aja-deh` di dalam direktori utama project kita yang mungkin kamu beri nama 
 `bebas-aja-deh` sehingga menjadi `bebas-aja-deh/src`. 
 
@@ -146,7 +146,7 @@ Untuk melihat hasilnya, silahkan check di `bebas-aja-deh/dist` terbentuk file be
 otomatis oleh webpack. Dan kamu bisa coba untuk menjalankan `bundle-test1.js` dengan perintah `node dist/bundle-test1.js`. Dan mari 
 lanjut ke contoh selanjutnya.
 
-### Bundling dari `abc.js`, `def.js`, `ghi.js` menjadi `bundle-test2.js`
+### 2. Bundling dari `abc.js`, `def.js`, `ghi.js` menjadi `bundle-test2.js`
 Mirip seperti pada contoh pemakaian pertama, kamu tinggal buat direktori `test2` di dalam direktori `src`. Lalu, kamu copy 3 file 
 yang sudah pernah kamu buat sebelumnya yaitu: `abc.js`, `def.js`, `ghi.js` ke direktori `src/test2`.
 
@@ -207,12 +207,11 @@ mencari file-file yg akan diproses.
 Adalah sebuah configuration object yang menentukan file-file mana saja yang harus diproses.
 
 ### Output
-Adalah sebuah configuration object yang terdiri dari: `output.path` dan `output.filename`.
-`output.path` yang menentukan absolute path string ke direktori mana output bundle file disimpan.
-`output.filename` yang menentukan nama output bundle file.
+Adalah sebuah configuration object yang terdiri dari: `output.path` dan `output.filename`. `output.path` yang menentukan absolute path 
+string ke direktori mana output bundle file disimpan. `output.filename` yang menentukan nama output bundle file.
 
 ### Loaders
-Loader dapat juga dilihat sebagai preprocessor yaitu melakukan proses-proses lain *sebelum* masuk ke proses bundling. Contohnya 
+Loader dapat juga dilihat sebagai sebuah preprocess yaitu melakukan proses-proses lain *sebelum* masuk ke proses bundling. Contohnya 
 melakukan proses compile `less`, `sass`, `scss` menjadi css. Contohnya lagi, men-transformasi atau sering dikenal sebagai transpiler 
 (transformation compiler) file-file source code ES6 JSX menjadi javascript ES5 / ES4 sesuai target versi ES yg dibutuhkan.
 
@@ -222,3 +221,81 @@ tersebut sudah dicompile menjadi css di loaders, lalu dibundle dan hasil bundle 
 Naahh plugins bertugas untuk memproses bundled files yg ada di buffer. Apa saja proses yg bisa dilakukan? Ada beberapa yaitu: 
 Minifikasi, Uglify, dan lain-lain.
 
+## Zoom-IN sedikit untuk Entry - Output, dan Loaders - Plugins
+Kita perlu tahu sedikit saja lebih lanjut bagaimana pemanfaatan Entry - Output, Loaders - Plugins supaya kita bisa 
+mengimplementasikan konsep-konsep dari webpack tersebut. Oiya, by the way kok *Context* nggak dimasukin untuk dibahas ya? Hemmm... 
+menurut saya pribadi, Context sepertinya kerjaannya sudah cukup segitu aja. Saya sudah bolak-balik documentation dari webpack dan memang 
+belum ada pembahasan lebih lanjut untuk pemanfaatan dari Context.
+
+### Entry - Output Zoom-IN
+Lho? Entry dan Output kan dua hal yang berbeda, kenapa penjelasannya dijadikan satu ? Hemmm...namanya juga snorkling, jadi saya bahas 
+seperlunya saja dan yang sudah merupakan common-usage pada real development case. Jadi untuk uncommon usage nya kamu bisa baca-baca 
+sendiri di https://webpack.js.org/configuration/output/ .
+
+Mari lihat kembali contoh dasar pemanfaatan Entry - Output yang sudah dijelaskan sebelumnya diatas. 
+
+```js
+entry: "./test1/utama.js",
+output: {
+    path: path.resolve(__dirname, "./dist"),
+    filename: "bundle-test1.js"
+}
+```
+
+dan
+
+```js
+entry: {
+    bebasapp: [
+        "./test2/abc.js",
+        "./test2/def.js",
+        "./test2/ghi.js"
+    ]
+},
+output: {
+    path: path.resolve(__dirname, "./dist"),
+    filename: "bundle-test2.js"
+}
+```
+
+Nah, ada lagi variasi penggunaan dari Entry - Output. Apa saja? 
+
+```js
+entry: {
+    app_satu: "./app1.js",
+    app_dua: "./app2.js",
+    app_tiga: "./app3.js"
+},
+output: {
+    path: path.resolve(__dirname, "./dist"),
+    filename: "[name].appbundle.js"
+}
+```
+
+Code diatas akan menghasilkan 3 file bundle di direktori `dist/` seperti berikut: `dist/app_satu.appbundle.js`, 
+`dist/app_dua.appbundle.js`, dan `dist/app_tiga.appbundle.js`.
+
+```js
+entry: {
+    app_satu: ["./abc.js", "./def.js", "./ghi.js"],
+    app_dua: ["./jkl.js", "mno.js", "./pqr.js"]
+},
+output: {
+    path: path.resolve(__dirname, "./dist"),
+    filename: "[name].appbundle.js"
+}
+```
+
+Mirip seperti yg sebelumnya, code diatas akan menghasilkan 2 file bundle di direktori `dist/` yaitu: (1) `app_satu.appbundle.js` dimana 
+merupakan bundle penggabungan dari `abc.js`, `def.js`, dan `ghi.js`. (2) `app_dua.appbundle.js` dimana merupakan bundle penggabungan 
+dari `jkl.js`, `mno.js`, `pqr.js`.
+
+### Loaders - Plugins Zoom-IN
+
+#### Studi Kasus - Men-transpile (transformation compile) file LESS menjadi file CSS
+Untuk pemanfaatan Loaders, Langsung saja dengan contoh kasus yang real. Untuk dapat menjalankan contoh kasus ini, maka kamu perlu 
+install beberapa library tambahan. Langsung saja diinstall seperti berikut:
+
+```sh
+
+```

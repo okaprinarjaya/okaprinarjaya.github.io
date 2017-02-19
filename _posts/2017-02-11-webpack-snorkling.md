@@ -23,6 +23,7 @@ Daftar Isi
     * [Loaders - Plugins Zoom-IN](#loaders-plugins-zoom-in)
         * [Studi Kasus - Men-transpile (transformation compile) LESS menjadi CSS](#studi-kasus-men-transpile-transformation-compile-less-menjadi-css)
         * [Studi Kasus - Meminifikasi hasil bundling](#studi-kasus-meminifikasi-hasil-bundling)
+* [Menyusun React Development Environment dengan Webpack 2 dan Babel](#menyusun-react-development-environment-dengan-webpack-2-dan-babel)
 * [Kesimpulan](#kesimpulan)
 
 ## Pengantar
@@ -437,7 +438,7 @@ module.exports = {
 }
 ```
 
-## Menyusun React Development Environment dengan Webpack 2, dan Babel
+## Menyusun React Development Environment dengan Webpack 2 dan Babel
 
 Berikut ini adalah cara menyusun / merangkai development environment untuk React yang paling minimal / basic. Kenapa kamu harus tahu 
 bagaimana rangkaian paling minimal dari sebuah environment? Karena supaya environment yg kamu rangkai tidak bloated, dan tidak berisi
@@ -456,7 +457,7 @@ npm install --save babel-preset-react
 ```
 
 Setelah semua packages diatas terinstall, maka lanjutkan dengan membuat file `webpack.config.js` di dalam direktori project kamu. Contoh
-nama direktori kamu adalah `MyOssommReact` sehingga menjadi `MyOssommReact/webpack.config.js`. `Berikut isi file webpack.config.js`:
+nama direktori kamu adalah `MyOssommReact` sehingga menjadi `MyOssommReact/webpack.config.js`. Berikut isi file `webpack.config.js`:
 
 ```js
 const path = require('path')
@@ -562,7 +563,12 @@ perintah berikut:
 node_modules/.bin/webpack-dev-server
 ```
 
-Lalu akses app kamu di browser dengan alamat http://localhost:8080 .
+Lalu akses app kamu di browser dengan alamat `http://localhost:8080`.
+
+Seperti yang sudah saya jelaskan sedikit diatas, mengetahui kebutuhan minimal dari sebuah environment itu sangat penting. Jika kamu 
+sudah mempunyai environment minimal ini, maka lanjutkanlah dengan mencari dan *membaca* literatur-literatur (tutorial-tutorial) React 
+lainnya agar mendapatkan studi kasus yg variatif dan pemahaman yang lebih baik. Saya sarankan *JANGAN COPY-PASTE*. Orang-orang yang 
+cuman copy-paste adalah orang-orang tidak akan pernah bisa membuat ulang lagi dari awal dari apa yang telah dia kerjakan.
 
 ## Kesimpulan
 Pekerjaan memilah-milah file assets bukan merupakan pekerjaan yang ringan karena banyak file yang harus kita pilah. Webpack dapat 

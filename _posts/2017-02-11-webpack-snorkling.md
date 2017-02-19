@@ -437,6 +437,133 @@ module.exports = {
 }
 ```
 
+## Menyusun React Development Environment dengan Webpack 2, dan Babel
+
+Berikut ini adalah cara menyusun / merangkai development environment untuk React yang paling minimal / basic. Kenapa kamu harus tahu 
+bagaimana rangkaian paling minimal dari sebuah environment? Karena supaya environment yg kamu rangkai tidak bloated, dan tidak berisi
+hal-hal yang tidak terpakai yg membuat environment kamu kotor dan membebani peformance. Berikut langkah demi langkah yang harus diikuti:
+
+Buatlah direktori project yang baru bernama bebas apa saja sesuai kebutuhan kamu. Contoh: `MyOssommReact`. Dari command line masuk ke 
+direktori project yang baru saja kamu buat itu lalu ketikkan perintah-perintah berikut:
+
+```sh
+npm init
+npm install --save webpack webpack-dev-server
+npm install --save babel-core babel-loader
+npm install --save babel-preset-es2015
+npm install --save react react-dom
+npm install --save babel-preset-react
+```
+
+Setelah semua packages diatas terinstall, maka lanjutkan dengan membuat file `webpack.config.js` di dalam direktori project kamu. Contoh
+nama direktori kamu adalah `MyOssommReact` sehingga menjadi `MyOssommReact/webpack.config.js`. `Berikut isi file webpack.config.js`:
+
+```js
+const path = require('path')
+const webpack = require('webpack')
+
+module.exports = {
+    context: path.resolve(__dirname, './src'),
+    entry: ['./app.js'],
+    output: {
+        path: path.resolve(__dirname, './public'),
+        filename: 'bundle-dist.js',
+        publicPath: '/public'
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015', 'react']
+                }
+            }
+        ]
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, './public'),
+        publicPath: '/public'
+    }
+}
+```
+
+Dari susunan konfigurasi webpack diatas, maka diasumsikan struktur direktori project sudah seperti berikut:
+
+```
+MyOssommReact/
+    src/
+        app.js
+    public/
+        index.html
+    webpack.config.js
+```
+
+Jika struktur direktori project kamu belum seperti itu, maka buatlah segera seperti itu. Jika struktur direktori kamu sudah seperti itu,
+maka berikut adalah file-file yang harus kamu tulis:
+
+`public/index.html`
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Awesome React</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="react-app"></div>
+        <script type="text/javascript" src="/public/bundle-dist.js" charset="utf-8"></script>
+    </body>
+</html>
+```
+
+`src/app.js`
+
+```js
+import React from 'react'
+import { render } from 'react-dom'
+
+const DescriptionOssomm = () => (
+    <p>Hey boss, friends, and ex. You are not as ossomm as my app!</p>
+)
+
+const WhateverLah = ({propsAsParamLalalaApaAja}) => {
+    return (
+        <p>I am {propsAsParamLalalaApaAja} at all</p>
+    )
+}
+
+class App extends React.Component
+{
+    render()
+    {
+        return (
+            <div>
+                <h1>This is my ossomm app!</h1>
+                <DescriptionOssomm />
+                <WhateverLah propsAsParamLalalaApaAja={"too handsome"} />
+            </div>
+        )
+    }
+}
+
+render(
+    <App />,
+    document.getElementById('react-app')
+)
+```
+
+Setelah semuaaaaa langkah-langkah diatas kamu lakukan dan semuaaaa file-file yang dibutuhkan sudah kamu buat, maka kamu bisa jalankan 
+perintah berikut: 
+
+```sh
+node_modules/.bin/webpack-dev-server
+```
+
+Lalu akses app kamu di browser dengan alamat http://localhost:8080 .
+
 ## Kesimpulan
 Pekerjaan memilah-milah file assets bukan merupakan pekerjaan yang ringan karena banyak file yang harus kita pilah. Webpack dapat 
 membantu kita memilah-milah file assets dengan mudah dan cepat.

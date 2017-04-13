@@ -11,7 +11,7 @@ mengimplementasikan fitur multi bahasa menggunakan paket library `node-polyglot`
 penanganan multi bahasa yang dikembangkan oleh Airbnb. Karena ada juga beberapa library penanganan multi bahasa dengan nama yang sama.
 
 Untuk persiapan project aplikasi React yang baru, saya menggunakan cara yang sudah saya tulis di tulisan saya sebelumnya yang bisa kamu
-baca di http://okaprinarjaya.github.io/webpack-snorkling/#menyusun-react-development-environment-dengan-webpack-2-dan-babel .
+baca di suatu bagian tulisan dengan judul [Menyusun React Development Environment dengan Webpack 2 dan Babel](http://okaprinarjaya.github.io/webpack-snorkling/#menyusun-react-development-environment-dengan-webpack-2-dan-babel) .
 
 ## Implementasi
 
@@ -24,9 +24,9 @@ npm install --save redux react-redux node-polyglot redux-polyglot
 Setelah paket-paket library yang dibutuhkan sudah berhasil terinstall semuanya, kita lanjutkan dengan membuat hal-hal berikut ini yaitu:
 
 * **Display component**
-* **Action types dan action creators, fungsi-fungsi reducers**
-* **Container component**
+* **Action types dan action creators, dan reducers**
 * **Redux store dan polyglot middleware**
+* **Container component**
 * **Melakukan translasi di display component**
 * **Handler switch bahasa pada suatu button**
 

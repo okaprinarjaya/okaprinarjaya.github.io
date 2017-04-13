@@ -25,7 +25,7 @@ Setelah paket-paket library yang dibutuhkan sudah berhasil terinstall semuanya, 
 
 * **Display component**
 * **Action types dan action creators, dan reducers**
-* **Redux store dan polyglot middleware**
+* **Redux store, polyglot middleware dan mendefinisikan database bahasa**
 * **Container component**
 * **Melakukan translasi di display component**
 * **Handler switch bahasa pada suatu button**
@@ -35,7 +35,7 @@ Setelah paket-paket library yang dibutuhkan sudah berhasil terinstall semuanya, 
 Buatlah file dan source code berikut ini di `APP/src/components`. Berikut file-file source code yang langsung dapat kamu copy di
 gist github:
 
-* [MenuNavigation.js](https://gist.github.com/okaprinarjaya/018c6116e307e39c9464d8b7e44f17e2.js)
+* [MenuNavigation.js](https://gist.github.com/okaprinarjaya/018c6116e307e39c9464d8b7e44f17e2)
 * [LanguageNavigation.js](https://gist.github.com/okaprinarjaya/b5bfd8630e5ab0f957c9e1400e6b17b2)
 * [MainWrapper.js](https://gist.github.com/okaprinarjaya/6fc0d3e30c652274a04e59cce785753c)
 
@@ -49,7 +49,135 @@ Jika semua source code display component sudah dibuat, maka kamu sudah bisa menc
 
 ### Action types dan action creators, dan reducers
 
-//
+#### `APP/src/actions/types.js`
 
+```js
+export const CHANGE_LOCALE = 'CHANGE_LOCALE'
+```
 
+#### `APP/src/actions/creators.js`
 
+```js
+import { CHANGE_LOCALE } from './types'
+
+export function changeLocale(locale) {
+  return {
+    type: CHANGE_LOCALE,
+    payload: {locale: locale}
+  }
+}
+```
+
+#### `APP/src/reducers/index.js`
+
+```js
+import { combineReducers } from 'redux'
+import { polyglotReducer } from 'redux-polyglot'
+import { CHANGE_LOCALE } from '../actions/types'
+
+function locale(state = 'en', action) {
+  if (action.type === CHANGE_LOCALE) {
+    return action.payload.locale
+  }
+
+  return state
+}
+
+const appReducers = combineReducers({
+  locale,
+  polyglot: polyglotReducer
+})
+
+export default appReducers
+```
+
+### Redux store, polyglot middleware dan mendefinisikan database bahasa
+
+Untuk konsep Redux Middleware dapat kamu baca di: http://redux.js.org/docs/advanced/Middleware.html#the-final-approach dan untuk konsep 
+store dapat kamu baca di: http://redux.js.org/docs/basics/Store.html .
+
+#### `APP/src/store.js`
+
+```js
+import { createStore, applyMiddleware, compose } from 'redux'
+import { createPolyglotMiddleware } from 'redux-polyglot'
+
+import { CHANGE_LOCALE } from './actions/types'
+import appReducers from './reducers'
+import languages from 'languages'
+
+// https://github.com/Tiqa/redux-polyglot#with-middleware
+const middlewares = [
+  createPolyglotMiddleware(
+    [CHANGE_LOCALE],
+    action => action.payload.locale,
+    locale => new Promise(resolve => {
+      resolve(languages[locale])
+    })
+  )
+]
+
+// http://redux.js.org/docs/advanced/Middleware.html#the-final-approach
+const appliedMiddleware = applyMiddleware(...middlewares);
+const reduxStore = compose(appliedMiddleware, window.devToolsExtension())
+const store = reduxStore(createStore)(appReducers, window.__INITIAL_STATE__);
+
+if (module.hot) {
+    module.hot.accept('./reducers', () => {
+        const nextRootReducer = require('./reducers').default
+        store.replaceReducer(nextRootReducer)
+    })
+}
+
+export default store
+```
+
+#### `APP/src/languages.js`
+
+```js
+const languages = {
+  "en": {
+    "weather": "Weather",
+    "false-news": "False News",
+    "valid-news": "Valid News",
+    "gossip": "Gossip",
+    "entertainment": "Entertainment",
+    "food-n-beverage": "Food and Beverage",
+    "products": "Products",
+    "music": "Music",
+    "store": "Store",
+    "settings": "Settings",
+    "calendar": "Calendar",
+    "games": "Games",
+    "electronics": "Electronics",
+    "finance": "Finance",
+    "banking": "Banking",
+    "automotive": "Automotive",
+  },
+  "fr": {
+    "weather": "Météo",
+    "false-news": "Fausses nouvelles",
+    "valid-news": "Nouvelles valides",
+    "gossip": "Potins",
+    "entertainment": "Divertissement",
+    "food-n-beverage": "Nourriture et boisson",
+    "products": "Des produits",
+    "music": "La musique",
+    "store": "Le magasin",
+    "settings": "Paramètres",
+    "calendar": "Calendrier",
+    "games": "Jeux",
+    "electronics": "électronique",
+    "finance": "La finance",
+    "banking": "Bancaire",
+    "automotive": "Automobile",
+  }
+}
+
+export default languages
+```
+
+### Container component
+
+Yang akan di-contain oleh container component yang kita buat adalah display component yang bernama `MainWrapper`. Kenapa kita 
+membutuhkan component yang bersifat sebagai container ? 

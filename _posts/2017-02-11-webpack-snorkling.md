@@ -454,6 +454,7 @@ npm install --save babel-core babel-loader
 npm install --save babel-preset-es2015
 npm install --save react react-dom
 npm install --save babel-preset-react
+npm install --save babel-preset-stage-2
 ```
 
 Setelah semua packages diatas terinstall, maka lanjutkan dengan membuat file `webpack.config.js` di dalam direktori project kamu. Contoh
@@ -478,7 +479,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015', 'react']
+                    presets: ['es2015', 'react', 'stage-2']
                 }
             }
         ]

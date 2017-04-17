@@ -153,6 +153,7 @@ const languages = {
     "finance": "Finance",
     "banking": "Banking",
     "automotive": "Automotive",
+    "menus-computer": "Menus of your computer"
   },
   "fr": {
     "weather": "Météo",
@@ -171,6 +172,7 @@ const languages = {
     "finance": "La finance",
     "banking": "Bancaire",
     "automotive": "Automobile",
+    "menus-computer": "Menus de votre ordinateur"
   }
 }
 
@@ -179,5 +181,195 @@ export default languages
 
 ### Container component
 
-Yang akan di-contain oleh container component yang kita buat adalah display component yang bernama `MainWrapper`. Kenapa kita 
-membutuhkan component yang bersifat sebagai container ? 
+Yang akan dimuat oleh container component yang kita buat adalah sebuah display component yang bernama `MainWrapper`. Kenapa kita 
+membutuhkan component yang bersifat sebagai container? Jawabannya adalah, karena kita akan mem-passing semua functions yang kita 
+butuhkan dari polyglot melalui sebuah container component yang akan mempassing semua kebutuhan ke display component. Jadi, Polanya 
+adalah, satu container component akan memuat satu atau lebih display component.
+
+Ok, berikut adalah file-file yang perlu kamu buat dan beberapa file yang sudah pernah kamu buat akan diedit / disesuaikan. Yaitu:
+
+#### `APP/src/containers/MainWrapperContainer.js` (File baru)
+
+```js
+import { connect } from 'react-redux'
+import { createGetP } from 'redux-polyglot'
+import { changeLocale } from '../actions/creators'
+import MainWrapper from '../components/MainWrapper'
+
+const mapStateToProps = (state) => {
+  const { t: translate } = createGetP({allowMissing: true})(state)
+
+  return {
+    ...state,
+    translate
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeLocaleHandler: (locale) => dispatch(changeLocale(locale))
+  }
+}
+
+const MainWrapperContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MainWrapper)
+
+export default MainWrapperContainer
+```
+
+Lalu, seperti penjelasan di awal, kita lanjutkan dengan mempassing beberapa function yg kita butuhkan yaitu `translate()` dan 
+`changeLocaleHandler()` ke display component bernama `MainWrapper`. Kita edit file `APP/src/components/MainWrapper.js` menjadi seperti 
+berikut ini:
+
+#### `APP/src/components/MainWrapper.js` (File edit)
+
+```js
+import React from 'react'
+import MenuNavigation from './MenuNavigation'
+import LanguageNavigation from './LanguageNavigation'
+
+const MainWrapper = ({ translate, changeLocaleHandler }) => (
+  <div>
+    <MenuNavigation translate={translate} changeLocaleHandler={changeLocaleHandler} />
+    <LanguageNavigation translate={translate} changeLocaleHandler={changeLocaleHandler} />
+  </div>
+)
+
+export default MainWrapper
+```
+
+Untuk membuat output / render maka kita tidak lagi menggunakan `MainWrapper` untuk dirender. Kita akan merender `MainWrapperContainer`
+dengan mengedit file `APP/src/app.js` dengan perubahan-perubahan seperti berikut:
+
+#### `APP/src/app.js` (File edit)
+
+```js
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from "react-redux"
+
+import store from './store'
+import MainWrapperContainer from './containers/MainWrapperContainer'
+
+class App extends React.Component
+{
+    render()
+    {
+        return (
+          <Provider store={store}>
+            <MainWrapperContainer />
+          </Provider>
+        )
+    }
+}
+
+render(
+    <App />,
+    document.getElementById('react-app')
+)
+```
+
+### Melakukan translasi di display component
+
+Untuk melakukan translasi kita menggunakan function `translate()` yang dimiliki oleh `node-polyglot`. Harus diingat, bahwa function 
+`translate()` dipassing ke `MainWrapper` melalui `MainWrapperContainer`. Berikut file-file yang perlu kita tambahkan perubahan yaitu:
+
+#### `APP/public/index.html` (File edit)
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Awesome React</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css" />
+
+        <script type="text/javascript">
+        window.__INITIAL_STATE__ = {
+          locale: "en",
+          polyglot: {
+            locale: "en",
+            phrases: {
+              "weather": "Weather",
+              "false-news": "False News",
+              "valid-news": "Valid News",
+              "gossip": "Gossip",
+              "entertainment": "Entertainment",
+              "food-n-beverage": "Food and Beverage",
+              "products": "Products",
+              "music": "Music",
+              "store": "Store",
+              "settings": "Settings",
+              "calendar": "Calendar",
+              "games": "Games",
+              "electronics": "Electronics",
+              "finance": "Finance",
+              "banking": "Banking",
+              "automotive": "Automotive",
+              "menus-computer": "Menus of your computer"
+            }
+          }
+        }
+        </script>
+    </head>
+    <body>
+        <div id="react-app"></div>
+        <script type="text/javascript" src="/public/bundle-dist.js" charset="utf-8"></script>
+    </body>
+</html>
+```
+
+#### `APP/src/components/MenuNavigation.js`
+
+```js
+import React from 'react'
+
+const MenuNavigation = ({ translate }) => (
+  <div className="menu-nav-wrap">
+
+    <h1>{translate('menus-computer')}</h1>
+
+    <div className="pagina">
+
+      <div className="linha">
+        <div className="tile amarelo">
+          <span className="titulo">{translate('weather')}</span><br/>
+        </div>
+
+        <div className="tile azul">{translate('false-news')}</div>
+        <div className="tile tileLargo vermelho">{translate('valid-news')}</div>
+        <div className="tile verde">{translate('gossip')}</div>
+        <div className="tile tileLargo amarelo">{translate('entertainment')}</div>
+      </div>
+
+      <div className="linha">
+        <div className="tile tileLargo amarelo">{translate('food-n-beverage')}</div>
+        <div className="tile azul">{translate('products')}</div>
+        <div className="tile verde">{translate('music')}</div>
+        <div className="tile vermelho">{translate('store')}</div>
+        <div className="tile tileLargo verde">{translate('settings')}</div>
+      </div>
+
+      <div className="linha">
+        <div className="tile amarelo">{translate('calendar')}</div>
+        <div className="tile verde">{translate('games')}</div>
+        <div className="tile vermelho">{translate('electronics')}</div>
+        <div className="tile tileLargo verde">{translate('finance')}</div>
+        <div className="tile azul">{translate('banking')}</div>
+        <div className="tile verde">{translate('automotive')}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+)
+
+export default MenuNavigation
+```
+
+### Handler switch bahasa pada suatu button
+
+//

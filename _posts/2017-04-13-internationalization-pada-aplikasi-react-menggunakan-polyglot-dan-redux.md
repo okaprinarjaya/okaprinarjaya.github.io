@@ -205,6 +205,8 @@ const mapStateToProps = (state) => {
   }
 }
 
+// Ini akan merelasi ke 'Handler switch bahasa pada suatu button'
+// function changeLocaleHandler() akan dieksekusi di display component LanguageNavigation
 const mapDispatchToProps = (dispatch) => {
   return {
     changeLocaleHandler: (locale) => dispatch(changeLocale(locale))
@@ -232,7 +234,7 @@ import LanguageNavigation from './LanguageNavigation'
 
 const MainWrapper = ({ translate, changeLocaleHandler }) => (
   <div>
-    <MenuNavigation translate={translate} changeLocaleHandler={changeLocaleHandler} />
+    <MenuNavigation translate={translate} />
     <LanguageNavigation translate={translate} changeLocaleHandler={changeLocaleHandler} />
   </div>
 )
@@ -372,4 +374,23 @@ export default MenuNavigation
 
 ### Handler switch bahasa pada suatu button
 
-//
+Pada saat kamu membuat code untuk container component `MainWrapperContainer`, harus kamu perhatikan bahwa kita sudah mendefinisikan
+sebuah function yang akan merubah `redux store` kita yang akan mengubah state `locale`. Edit file `APP/src/components/LanguageNavigation.js` menjadi seperti berikut:
+
+#### `APP/src/components/LanguageNavigation.js` (File edit)
+
+```js
+import React from 'react'
+
+const LanguageNavigation = ({ translate, changeLocaleHandler }) => (
+  <div className="lang-nav-wrap">
+    <button type="button" onClick={(x) => changeLocaleHandler('en')}>Change language to ENGLISH</button>
+    <button type="button" onClick={(x) => changeLocaleHandler('fr')}>Change language to FRANCE</button>
+  </div>
+)
+
+export default LanguageNavigation
+```
+
+DONE! kamu bisa test hasilnya.
+

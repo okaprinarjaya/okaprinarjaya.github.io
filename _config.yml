@@ -54,7 +54,7 @@ baseurl: ""
 #
 
 markdown: kramdown
-theme: jekyll-theme-cayman
+theme: cayman
 highlighter: rouge
 permalink: /:title/
 

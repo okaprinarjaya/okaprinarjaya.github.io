@@ -28,7 +28,7 @@ Yang dimaksud dari cara passing attribute di pemanggilan komponen sebagai JSX ad
 
 #### `JustExample.js`
 
-```jsx
+```js
 import React, { Component } from 'react'
 import AnotherComExample from './AnotherComExample'
 import aConfig from './config/aConfig'
@@ -63,7 +63,7 @@ diambil dari object state**. Codenya terlihat seperti code berikut dibawah ini:
 
 #### `PuzzleAppContainer.js`
 
-```jsx
+```js
 import { connect } from "react-redux"
 import { setOperation } from "../actions/actionCreators"
 import PuzzleApp from "../components/PuzzleApp"
@@ -100,7 +100,7 @@ function `connect()` hanyalah proses supply informasi ke class komponen `PuzzleA
 
 #### `PuzzleApp.js`
 
-```jsx
+```js
 import React from 'react'
 
 const PuzzleApp = (props) => {

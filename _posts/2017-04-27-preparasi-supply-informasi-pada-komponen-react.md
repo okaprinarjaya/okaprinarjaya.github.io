@@ -90,8 +90,8 @@ const PuzzleAppContainer = connect(
 export default PuzzleAppContainer
 ```
 
-Pada contoh code diatas, informasi-informasi di-supply ke class komponen `PuzzleApp` melalui pembuatan variabel `PuzzleAppContainer` 
-dan `PuzzleAppContainer` hanyalah sebuah object yang memuat instance class komponen `PuzzleApp`.
+Pada contoh code diatas, informasi-informasi di-supply ke class komponen `PuzzleApp` melalui pembuatan variabel `PuzzleAppContainer`. 
+Dan, `PuzzleAppContainer` hanyalah sebuah object yang memuat instance class komponen `PuzzleApp`.
 
 Lalu mana yg akan dipanggil di dalam fungsi `render()` ? Jawabannya, tentunya `PuzzleAppContainer` yang akan dipanggil di dalam 
 `render()`. **TAPI** yang dirender pada akhirnya adalah `PuzzleApp` karena `PuzzleAppContainer` yang diciptakan melalui penggunaan 
@@ -119,6 +119,48 @@ const PuzzleApp = (props) => {
 export default PuzzleApp
 ```
 
-## Pola preparasi supply informasi
+## Implementasi pola preparasi supply informasi
+
+Di bagian tulisan ini, mari kita mulai mempraktekkan preparasi supply informasi dengan membuat struktur direktori aplikasi yang sesuai 
+yang dapat memanfaatkan function-function umum yang nanti akan kita definisikan. Dan berikut struktur direktori dari aplikasi kita:
+
+```text
+APP/
+|__ src/
+   |__ actions/
+   |__ reducers/
+   |__ common/
+      |__ componentPreparatory.js
+      |__ config/
+         |__ config.lang.json
+         |__ config.constants.json
+         |__ config.etc.json
+   |__ components/
+      |__ ComponentOne/
+         |__ ComponentOne.js
+         |__ index.js
+      |__ ComponentTwo/
+         |__ ComponentTwo.js
+         |__ index.js
+      |__ ComponentThree/
+         |__ ComponentThree.js
+         |__ index.js
+      |__ ComponentEtc/
+         |__ ComponentEtc.js
+         |__ index.js
+```
+
+Dapat dilihat dari struktur direktori diatas, komponen yang bersifat / berjenis display-component dibuatkan dan ditempatkan di direktori 
+baru sesuai nama komponennya (`ComponentOne/`, `ComponentTwo/`, `ComponentThree/`, `ComponentEtc/`).
+
+Pastikan library `redux` dan `react-redux` sudah terinstall di project kamu. Dengan menggunakan struktur direktori diatas, maka berikut 
+ini adalah hal-hal yang perlu dibuat:
+
+1. **Function-function umum untuk preparasi supply informasi**
+2. **Action types dan creators**
+3. **Reducers**
+4. **Dua display component**
+5. **Tampilkan dua component itu**
 
 //
+

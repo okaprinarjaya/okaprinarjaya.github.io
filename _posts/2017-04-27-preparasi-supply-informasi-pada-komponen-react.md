@@ -132,7 +132,7 @@ APP/
    |__ common/
       |__ componentPreparatory.js
       |__ config/
-         |__ config.lang.json
+         |__ config.menubar.json
          |__ config.constants.json
          |__ config.etc.json
    |__ components/
@@ -157,10 +157,51 @@ Pastikan library `redux` dan `react-redux` sudah terinstall di project kamu. Den
 ini adalah hal-hal yang perlu dibuat:
 
 1. **Function-function umum untuk preparasi supply informasi**
-2. **Action types dan creators**
-3. **Reducers**
-4. **Dua display component**
-5. **Tampilkan dua component itu**
+2. **Hal-hal Redux**
+3. **Dua display component**
+4. **Tampilkan dua component itu**
+
+### Function-function umum untuk preparasi supply informasi
+
+Pada struktur direktori yang telah dirancang diatas, function-function umum untuk preparasi supply informasi ditaruh di 
+`APP/src/common/componentPreparatory.js`. Berikut listing code nya: 
+
+#### `APP/src/common/componentPreparatory.js`
+
+```js
+import React from 'react'
+import { connect } from 'react-redux'
+import { commonDispatchMethod } from './actions/actionCreators'
+
+export const supplyConfigMenubar = (configMenubar, TheComponent) => (props) => {
+  return (
+    <TheComponent {...props} configMenubar={configMenubar} />
+  )
+}
+
+export const supplyTheNameAttrStateObj = (TheComponent) => {
+  return connect(
+    (state) => {
+      return {
+        theName: state.theName
+      }
+    }
+  )(TheComponent)
+}
+
+export const supplyCommonActionDispatchMethod = (TheComponent) => {
+  return connect(
+    (state) => {
+      return {}
+    },
+    (dispatch) => {
+      return {
+        commonDispatchMethodHandler: (theParam) => dispatch(commonDispatchMethod(theParam))
+      }
+    }
+  )(TheComponent)
+}
+```
 
 //
 

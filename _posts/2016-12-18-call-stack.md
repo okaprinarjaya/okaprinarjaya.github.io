@@ -11,6 +11,7 @@ konsep dari sekian banyak bagian-bagian konsep yang tersusun menjadi satu dalam 
 **Call** identik dengan pemanggilan sebuah fungsi. **Stack** adalah sebuah area di memori (RAM) yang isinya susunan / tumpukan 
 yang digunakan dalam proses pemanggilan (eksekusi) fungsi. Sebuah fungsi terdiri dari parameter-parameter, variabel-variabel 
 lokal, dan nilai kembalian (return value). Parameter-parameter, variabel-variabel dan nilai kembalian itulah yang disimpan di stack.
+<!--more-->
 
 ## Bagian - bagian Call Stack
 Belajar tentang Call Stack, maka muncul bagian - bagian berikut:

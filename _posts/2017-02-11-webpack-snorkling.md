@@ -31,6 +31,7 @@ Kata "Snorkling" disini saya pakai sebagai kiasan yang berarti mempelajari dan m
 pemula atau cukup tahu permukaan-permukaan nya saja. Tulisan ini akan membahas cara instalasi webpack, sedikit konsep webpack, dan 
 penerapan / implementasi dari konsep webpack. Semoga dengan adanya tulisan ini, saya pribadi dapat dengan mudah menerapkan webpack 
 dimana saja karena semua tata cara instalasi, konfigurasi, dan penggunaan tercatat disini semua.
+<!--more-->
 
 ## Instalasi webpack
 Sebelum memulai instalasi webpack, pastikan kamu sudah install versi paling fresh Node.js terlebih dahulu. Release Node.js LTS yang 

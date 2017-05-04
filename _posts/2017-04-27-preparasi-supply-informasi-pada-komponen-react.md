@@ -8,6 +8,7 @@ title: Preparasi supply informasi pada komponen React
 Setiap komponen pada suatu aplikasi berbasis React tentunya ketergantungan dengan berbagai jenis informasi pada saat komponen itu mulai 
 diaktifkan (mounted). Informasi-informasi itu dapat berupa informasi wording, informasi styling, informasi bahasa, dan informasi daftar 
 menu. Dan bahkan informasi yang berupa function yang nantinya bisa dipanggil dari komponen yang menerima supply informasi.
+<!--more-->
 
 Biasanya informasi-informasi itu disimpan sebagai konfigurasi yang disimpan dalam sebuah **file konfigurasi** atau **object state** aplikasi React kita. 
 Nah, Informasi-informasi itu akan disiapkan (preparasi) dan di-supply ke sebuah component yang membutuhkannya melalui function-

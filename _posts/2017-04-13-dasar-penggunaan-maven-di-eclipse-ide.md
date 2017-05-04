@@ -12,6 +12,8 @@
     * String yg ditambahkan adalah string `;C:\apache-maven-3.5.0\bin`. Perhatikan! harus ada titik koma (semicolon) terlebih dahulu sebelum menambahkan string baru apapun.
 
 4. Test instalasi maven apakah maven sudah bisa berjalan dengan baik dengan cara: Buka windows command prompt (cmd) **yang baru**, lalu ketik perintah `mvn -version`
+
+<!--more-->
     
 ## Instalasi Eclipse IDE
 

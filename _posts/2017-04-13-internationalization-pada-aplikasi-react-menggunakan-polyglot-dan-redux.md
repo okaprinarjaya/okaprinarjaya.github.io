@@ -9,6 +9,7 @@ Fitur multi bahasa pada suatu website adalah sangat penting untuk menjangkau pen
 mengimplementasikan fitur multi bahasa menggunakan paket library `node-polyglot` yang di-integrasikan dengan `redux-polyglot` dan 
 `redux` yang di-integrasikan dengan `react-redux`. Perlu diperhatikan, kita menggunakan `node-polyglot` yang merupakan library 
 penanganan multi bahasa yang dikembangkan oleh Airbnb. Karena ada juga beberapa library penanganan multi bahasa dengan nama yang sama.
+<!--more-->
 
 Untuk persiapan project aplikasi React yang baru, saya menggunakan cara yang sudah saya tulis di tulisan saya sebelumnya yang bisa kamu
 baca di suatu bagian tulisan dengan judul [Menyusun React Development Environment dengan Webpack 2 dan Babel](http://okaprinarjaya.github.io/webpack-snorkling/#menyusun-react-development-environment-dengan-webpack-2-dan-babel) .

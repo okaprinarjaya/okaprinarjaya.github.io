@@ -77,3 +77,4 @@ exclude:
     - CNAME
 
 theme: jekyll-theme-cayman
+excerpt_separator: <!--more-->

@@ -1,4 +1,9 @@
-## Instalasi Maven
+---
+layout: post
+title: Dasar Penggunaan Maven di Eclipse IDE
+---
+
+## Instalasi Maven di Windows
 
 1. Download Maven di https://maven.apache.org/download.cgi .Saya menggunakan versi terbaru versi 3.5.0
 
@@ -14,6 +19,20 @@
 4. Test instalasi maven apakah maven sudah bisa berjalan dengan baik dengan cara: Buka windows command prompt (cmd) **yang baru**, lalu ketik perintah `mvn -version`
 
 <!--more-->
+
+## Instalasi Maven di GNU/Linux Ubuntu
+
+1. Download Maven di https://maven.apache.org/download.cgi .Saya menggunakan versi terbaru versi 3.5.0
+
+2. Extract file archive `apache-maven-3.5.0-bin.tar.gz` ke `/opt/` dengan perintah `tar -xzvf apache-maven-3.5.0-bin.tar.gz -C /opt/`
+
+3. Edit / buka file `/etc/environment` lalu tambahkan string `:/opt/apache-maven-3.5.0/bin` di bagian baris `PATH`. Sehingga 
+menjadi seperti ini: `PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/apache-maven-3.5.0/bin"`
+
+4. Lanjutkan jalankan perintah `source /etc/environment`
+
+5. Untuk test apakah maven berhasil terinstall, jalankan perintah: `mvn -version`. JIKA perintah tersebut tidak ditemukan, maka 
+restart komputer kamu.
     
 ## Instalasi Eclipse IDE
 

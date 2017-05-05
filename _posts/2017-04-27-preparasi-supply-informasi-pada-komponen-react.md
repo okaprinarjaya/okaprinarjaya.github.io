@@ -284,7 +284,7 @@ export default supplyConfigConstants(
 )
 ```
 
-Jika kamu bingung membaca code berikut ini:
+Dari code `index.js` diatas, apakah kamu bingung membaca dan mengerti potongan code diatas yang seperti berikut ini?
 
 ```js
 export default supplyConfigConstants(
@@ -297,7 +297,7 @@ export default supplyConfigConstants(
 )
 ```
 
-maka kamu bisa menulisnya seperti berikut ini agar lebih mudah dibaca dan dimengerti. Berikut:
+Agar code diatas lebih mudah dibaca dan dimengerti, maka kamu bisa menulisnya seperti berikut ini:
 
 ```js
 let MenubarPrepare = supplyConfigConstants(configConstants, Menubar)
@@ -354,5 +354,5 @@ render(
 ## Download source code
 
 Silahkan download / clone source code lengkap dari contoh aplikasi yang dibuat di tulisan ini di 
-https://github.com/okaprinarjaya/react-comprep 
+[https://github.com/okaprinarjaya/react-comprep](https://github.com/okaprinarjaya/react-comprep)
 

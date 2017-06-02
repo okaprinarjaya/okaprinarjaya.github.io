@@ -13,6 +13,21 @@ NodeJs. Ya, Sejak lahirnya teknologi yang bernama NodeJs (https://nodejs.org/en/
 Dengan mengkombinasikan salah satu platform javascript UI framework dengan NodeJs, maka kita dapat mewujudkan isomorphic web apps. 
 Contoh, mengkombinasikan ReactJs dengan NodeJs, atau AngularJs dengan NodeJs.
 
+## Mulai membangun Isomorphic React web apps
+
+Untuk mulai membangun React web apps yang isomorphic, maka berikut ini adalah kebutuhan minimal untuk library-library apa saja yang
+harus diinstall diluar dari library-library yg berfungsi sebagai transpiler. Berikut:
+
+1. react
+2. react-dom
+3. react-router
+4. express
+5. ejs
+6. webpack-isomorphic-tools
+
+`react`, dan `react-dom` tentunya adalah library inti untuk membangun web apps berbasis React (belum isomorphic). Dan library-library 
+yang membuat suatu react web apps menjadi bersifat isomorphic adalah: `express`, `react-router`, method `react-dom/server/renderToString()` dan `webpack-isomorphic-tools`. 
+
 ## Kenapa disarankan untuk isomorphic?
 
 Ada 3 hal yang sangat mendasar dan penting kenapa disarankan untuk isomorphic, yaitu: 
@@ -64,19 +79,3 @@ Hampir semua proses dapat dilakukan di dua sisi (client & server). Berikut prose
 Tetapi tetap masih ada beberapa proses yang tidak dapat dilakukan di sisi server ataupun di sisi client. Proses yang tidak dapat
 dilakukan di sisi server adalah berinteraksi dengan object-object browser seperti: `window`, dan `document`. Proses yang tidak dapat 
 dilakukan di sisi client adalah berinteraksi dengan resources server seperti: filesystem, dan session.
-
-## Mulai membangun Isomorphic React web apps
-
-Untuk mulai membangun React web apps yang isomorphic, maka berikut ini adalah kebutuhan minimal untuk library-library apa saja yang
-harus diinstall diluar dari library-library yg berfungsi sebagai transpiler. Berikut:
-
-1. react
-2. react-dom
-3. react-router
-4. express
-5. ejs
-6. webpack-isomorphic-tools
-
-`react`, dan `react-dom` tentunya adalah library inti untuk membangun web apps berbasis React (belum isomorphic). Dan library-library 
-yang membuat suatu react web apps menjadi bersifat isomorphic adalah: `express`, `react-router`, method `react-dom/server/renderToString()` dan `webpack-isomorphic-tools`. 
-

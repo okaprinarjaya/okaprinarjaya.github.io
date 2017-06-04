@@ -12,6 +12,7 @@ merupakan sebuah kata sifat ini dijadikan sebagai sifat baru dari sebuah javascr
 NodeJs. Ya, Sejak lahirnya teknologi yang bernama [NodeJs](https://nodejs.org/en/) javascript mulai bisa dijalankan di sisi server. 
 Dengan mengkombinasikan salah satu platform javascript UI framework dengan NodeJs, maka kita dapat mewujudkan isomorphic web apps. 
 Contoh, mengkombinasikan ReactJs dengan NodeJs, atau AngularJs dengan NodeJs.
+<!--more-->
 
 ## Mulai membangun Isomorphic React web apps
 

@@ -18,15 +18,24 @@ Contoh, mengkombinasikan ReactJs dengan NodeJs, atau AngularJs dengan NodeJs.
 Untuk mulai membangun React web apps yang isomorphic, maka berikut ini adalah kebutuhan minimal untuk library-library apa saja yang
 harus diinstall diluar dari library-library yg berfungsi sebagai transpiler. Berikut:
 
+**Kebutuhan Wajib**
 1. react
 2. react-dom
 3. react-router
 4. express
-5. ejs
-6. webpack-isomorphic-tools
 
 `react`, dan `react-dom` tentunya adalah library inti untuk membangun web apps berbasis React (belum isomorphic). Dan library-library 
-yang membuat suatu react web apps menjadi bersifat isomorphic adalah: `express`, `react-router`, method `react-dom/server/renderToString()` dan `webpack-isomorphic-tools`. 
+yang membuat suatu react web apps menjadi bersifat isomorphic adalah: `express`, `react-router`, method `react-dom/server/renderToString()`
+
+**Kebutuhan Opsional**
+1. ejs
+2. webpack-isomorphic-tools
+
+Pada kebutuhan opsional ini, library `ejs` adalah untuk templating, menempelkan hasil `renderToString()` ke layout view (bukan 
+component). Dan, `webpack-isomorphic-tools` adalah library untuk ....
+
+### Konsep server side rendering
+
 
 ## Kenapa disarankan untuk isomorphic?
 

@@ -9,7 +9,7 @@ Javascript web apps yang isomorphic adalah suatu web apps berbasis javascript ya
 bisa berjalan di sisi server. Semua proses dapat dieksekusi di sisi server atau client. Lalu, Apa yang menyebabkan Isomorphic yang 
 merupakan sebuah kata sifat ini dijadikan sebagai sifat baru dari sebuah javascript web apps? 
 
-NodeJs. Ya, Sejak lahirnya teknologi yang bernama NodeJs (https://nodejs.org/en/) javascript mulai bisa dijalankan di sisi server. 
+NodeJs. Ya, Sejak lahirnya teknologi yang bernama [NodeJs](https://nodejs.org/en/) javascript mulai bisa dijalankan di sisi server. 
 Dengan mengkombinasikan salah satu platform javascript UI framework dengan NodeJs, maka kita dapat mewujudkan isomorphic web apps. 
 Contoh, mengkombinasikan ReactJs dengan NodeJs, atau AngularJs dengan NodeJs.
 
@@ -32,10 +32,43 @@ yang membuat suatu react web apps menjadi bersifat isomorphic adalah: `express`,
 2. webpack-isomorphic-tools
 
 Pada kebutuhan opsional ini, library `ejs` adalah untuk templating, menempelkan hasil `renderToString()` ke layout view (bukan 
-component). Dan, `webpack-isomorphic-tools` adalah library untuk ....
+component). Dan, `webpack-isomorphic-tools` adalah library untuk membantu kita mengkonsumsi output assets dari webpack secara mudah. 
+Karena output nama file dari assets yang diproses di webpack adalah sangat dinamis terutama saat kita memanfaatkan fitur [Code Splitting](https://webpack.js.org/guides/code-splitting/)
 
-### Konsep server side rendering
+### Bagaimana server side rendering bekerja?
 
+```
+                         +---------------+               +------------------------+
+  client                 |               |               |                        |
+  HTTP Request           | express       |  url path     |                        |
+  GET /galleries         | app router    |  /galleries   |     React Router       |
++--------------------->  |               | +-----------> |                        |
+                         |               |               | if match() then        |
+                         +---------------+               | +--------------------+ |
+                                                         | |                    | |
+                                                         | |                    | |
+                                                         | | react-dom/server/  | |
+                                                         | | renderToString()   | |
+                                                         | |                    | |
+                                                         | |                    | |
+                                                         | |                    | |
+                                                         | |                    | |
+                                                         | +--------------------+ |
+                                                         |                        |
+                                                         +------------------------+
+
+```
+
+Dapat kamu lihat pada ascii diagram diatas, ada dua kali proses passing informasi url path ke dua system router yg berbeda. Yang pertama
+informasi url path yg datang dari client request melalui browser dimana url path itu di-passing ke express app router. Selanjutnya yang 
+kedua, dari express app router informasi url path di-passing ke react router dimana sebagai informasi untuk membuat keputusan component
+mana yang akan dirender.
+
+### Mulai coding!
+
+Ok! Mari kita mulai menulis code untuk mewujudkan react web apps yg isomorphic. Mulailah membuat file-file berikut ini:
+
+#### 1. `ListEmployee.js`
 
 ## Kenapa disarankan untuk isomorphic?
 

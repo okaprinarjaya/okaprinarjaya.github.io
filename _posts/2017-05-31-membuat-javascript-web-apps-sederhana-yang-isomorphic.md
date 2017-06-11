@@ -17,7 +17,7 @@ Contoh, mengkombinasikan ReactJs dengan NodeJs, atau AngularJs dengan NodeJs.
 ## Mulai membangun Isomorphic React web apps
 
 Untuk mulai membangun React web apps yang isomorphic, maka berikut ini adalah kebutuhan minimal untuk library-library apa saja yang
-harus diinstall diluar dari library-library yg berfungsi sebagai transpiler. Berikut:
+harus diinstall diluar dari library-library yg berfungsi sebagai transpiler dan bundler. Berikut:
 
 **Kebutuhan Wajib**
 1. react
@@ -65,11 +65,55 @@ informasi url path yg datang dari client request melalui browser dimana url path
 kedua, dari express app router informasi url path di-passing ke react router dimana sebagai informasi untuk membuat keputusan component
 mana yang akan dirender.
 
+### Mulai persiapan project dan instalasi semua packages yang dibutuhkan
+
+Struktur direktori kita akan seperti berikut dibawah ini:
+
+```
+isomorphic-react
+|_ src/
+    |_ components/
+      |_ com1
+      |_ com2
+      |_ comX
+|_ assets
+```
+
+Dan, berikut ini adalah package-package library yang wajib kamu install terlebih dahulu yaitu:
+
+1. Package-package library transpiler dan bundler
+   * babel-core
+   * babel-loader
+   * babel-register
+   * babel-preset-es2015
+   * babel-preset-react
+   * babel-preset-stage-2
+   * babel-preset-react-hmre
+   * webpack
+   * webpack-dev-server
+   * webpack-dev-middleware
+   * webpack-hot-middleware
+
+2. Package-package library react app
+   * react
+   * react-dom
+   * react-router@^3.0.5
+   * express
+
 ### Mulai coding!
 
-Ok! Mari kita mulai menulis code untuk mewujudkan react web apps yg isomorphic. Mulailah membuat file-file berikut ini:
+Ok! Mari kita mulai menulis code untuk mewujudkan react web apps yg isomorphic. Code-code yang akan kita tulis dibagi menjadi beberapa
+bagian yaitu:
 
-#### 1. `ListEmployee.js`
+1. Code Fondasi isomorphic
+2. Code components
+3. Code Router
+
+#### Code Fondasi isomorphic
+
+**`1. server.js`**
+
+// 
 
 ## Kenapa disarankan untuk isomorphic?
 

@@ -100,21 +100,28 @@ Dan, berikut ini adalah package-package library yang wajib kamu install terlebih
    * react-router@^3.0.5
    * express
 
-### Mulai coding!
+## Mulai coding!
 
 Ok! Mari kita mulai menulis code untuk mewujudkan react web apps yg isomorphic. Code-code yang akan kita tulis dibagi menjadi beberapa
 bagian yaitu:
 
-1. Code Fondasi isomorphic
-2. Code components
-3. Code Router
+1. Webpack configuration
+2. Code Fondasi isomorphic
+3. Code components
+4. Code Router
 
-#### Code Fondasi isomorphic
+### Code Fondasi isomorphic
 ---
 
-**`1. server.js`**
+#### 1. [APP/src/server.js](https://github.com/okaprinarjaya/react-isomorphic/blob/master/src/server.js)
 
-// 
+Ini adalah express app yang berfungsi sebagai webserver yang melayani (serve) file bundle javascript, css, dan file chunking javascript 
+dari react apps kita.
+
+#### 2. [APP/src/webserver-app.js](https://github.com/okaprinarjaya/react-isomorphic/blob/master/src/webserver-app.js) dan [APP/src/frontend.js](https://github.com/okaprinarjaya/react-isomorphic/blob/master/src/frontend.js)
+
+Ini adalah express app yang berfungsi sebagai webserver yang melayani rendering aplikasi react kita menjadi pure HTML. Disinilah konsep 
+server side rendering dari sifat isomorphic di-implementasikan.
 
 ## Kenapa disarankan untuk isomorphic?
 

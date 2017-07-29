@@ -39,6 +39,7 @@ Karena output nama file dari assets yang diproses di webpack adalah sangat dinam
 ### Bagaimana server side rendering bekerja?
 
 ```
+  1                      2                               3
                          +---------------+               +------------------------+
   client                 |               |               |                        |
   HTTP Request           | express       |  url path     |                        |
@@ -107,8 +108,13 @@ bagian yaitu:
 
 1. Webpack configuration
 2. Code Fondasi isomorphic
-3. Code components
-4. Code Router
+3. Code Router
+4. Code components
+
+### Webpack configuration 
+---
+
+#### [APP/webpack.config.js](https://github.com/okaprinarjaya/react-isomorphic/blob/master/webpack.config.js)
 
 ### Code Fondasi isomorphic
 ---
@@ -116,12 +122,20 @@ bagian yaitu:
 #### 1. [APP/src/server.js](https://github.com/okaprinarjaya/react-isomorphic/blob/master/src/server.js)
 
 Ini adalah express app yang berfungsi sebagai webserver yang melayani (serve) file bundle javascript, css, dan file chunking javascript 
-dari react apps kita.
+dari react apps kita. Seringkali disebut dengan istilah *Hot Server*. 
+
+Sekalinya react apps javascript bundles kita di-load dari server, maka selanjutnya SEMUA state / perubahan pada user interface akan 
+berkoordinasi dengan file bundle javascript. Inilah yang mengimplementasikan konsep client side rendering dari sifat isomorphic.
 
 #### 2. [APP/src/webserver-app.js](https://github.com/okaprinarjaya/react-isomorphic/blob/master/src/webserver-app.js) dan [APP/src/frontend.js](https://github.com/okaprinarjaya/react-isomorphic/blob/master/src/frontend.js)
 
-Ini adalah express app yang berfungsi sebagai webserver yang melayani rendering aplikasi react kita menjadi pure HTML. Disinilah konsep 
-server side rendering dari sifat isomorphic di-implementasikan.
+Ini adalah express app yang berfungsi sebagai webserver yang melayani (server) rendering aplikasi react kita menjadi plain text HTML 
+string. Disinilah konsep server side rendering dari sifat isomorphic di-implementasikan. Di dua file inilah diagram diatas di-
+implementasikan. Yaitu diagram yang menggambarkan bagaimana server side rendering bekerja.
+
+Jika kita membandingkan 2 source code ini dengan diagram diatas, maka pada `src/frontend.js` line: 17, adalah mengimplementasikan proses 
+ke-2 pada diagram. Dan, pada `src/frontend.js` line: 18 s/d 42 mengimplementasikan proses ke-3 pada diagram. Dan, pada 
+`src/webserver-app.js` line: 15 adalah membangkitkan / membuat proses 2 dan 3 tersedia.
 
 ## Kenapa disarankan untuk isomorphic?
 

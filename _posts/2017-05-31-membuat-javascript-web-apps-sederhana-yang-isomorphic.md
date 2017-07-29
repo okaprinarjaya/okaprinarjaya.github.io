@@ -14,10 +14,162 @@ Dengan mengkombinasikan salah satu platform javascript UI framework dengan NodeJ
 Contoh, mengkombinasikan ReactJs dengan NodeJs, atau AngularJs dengan NodeJs.
 <!--more-->
 
-## Mulai membangun Isomorphic React web apps
+## Implementasi isomorphic React app secara cepat dan sekedar jadi (quick and dirty)
 
-Untuk mulai membangun React web apps yang isomorphic, maka berikut ini adalah kebutuhan minimal untuk library-library apa saja yang
-harus diinstall diluar dari library-library yg berfungsi sebagai transpiler dan bundler. Berikut:
+Supaya kamu cepat dapat bayangan implementasinya maka mari kita membuat react app yang amat sangat super sederhana secara cepat dan 
+sekedarnya. Ikut langkah-langkah berikut ini:
+
+### 1. Install semua dependency
+
+Saya rasa saya tidak perlu lagi mengajarkan bagaimana meng-inisiasi react app directory. Langsung saja saya sampaikan library-library 
+apa saja yang perlu di-install. Berikut:
+
+```
+npm install express react react-dom babel-core babel-loader babel-register babel-preset-es2015 babel-preset-react babel-preset-stage-2
+npm install webpack
+```
+
+### 2. Tulis code
+
+#### Kode untuk sisi server
+
+#### `.babelrc`
+
+```json
+{
+  "presets": [
+    "react",
+    "es2015",
+    "stage-2"
+  ]
+}
+
+```
+
+#### `render-webserver.js`
+
+```javascript
+require('babel-register')({
+  ignore: /\/(build|node_modules)\//
+});
+
+require('./appserve');
+```
+
+#### `appserve.js`
+
+```javascript
+import React from 'react';
+import {renderToString} from 'react-dom/server';
+import express from 'express';
+
+import App from './App';
+
+const app = express();
+
+app.use(express.static('public'));
+
+app.get('/', (request, response) => {
+  var html = renderToString(<App/>);
+  response.send(html);
+});
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log('http://localhost:' + PORT);
+});
+```
+
+#### Kode untuk sisi client (hal-hal terkait webpack)
+
+#### `webpack.config.js`
+
+```javascript
+const path = require('path');
+
+const APP_BASE = path.normalize(path.join(__dirname, '.'));
+const BUILD_DIR = path.join(APP_BASE, 'public');
+
+module.exports = {
+  entry: './App',
+  output: {
+    path: BUILD_DIR,
+    filename: 'bundle-app.js'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react', 'stage-2']
+        }
+      }
+    ]
+  }
+};
+```
+
+#### Kode yang untuk kedua sisi (sisi server dan client)
+
+#### `App.js`
+
+```javascript
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+
+class App extends Component {
+  handleClick() {
+    alert('Haaalloowwwww');
+  }
+
+  render() {
+    return (
+      <html>
+        <head>
+          <title>Isomorphic React</title>
+        </head>
+        <body>
+          <div>
+            <p>App component</p>
+            <button type="button" onClick={this.handleClick}>Click me!</button>
+          </div>
+          <script src="/bundle-app.js"/>
+        </body>
+      </html>
+    );
+  }
+}
+
+export default App;
+
+if (typeof window !== 'undefined' && window.document && window.document.createElement) {
+  window.onload = () => {
+    ReactDOM.render(<App/>, document);
+  }
+}
+```
+
+Jalankan dengan perintah-perintah berikut:
+
+```text
+// Jika di Unix like environment (GNU/Linux, Macintosh)
+node_modules/.bin/webpack
+
+// Jika di windows
+node_modules\.bin\webpack
+
+node render-webserver.js
+```
+
+Akses react app kamu di `http://localhost:3000`
+
+## Mulai membangun Isomorphic React web apps yang sedikit serius
+
+Untuk mulai membangun React web apps yang isomorphic yang sedikit serius dan dengan pola yang sedikit teratur juga, berbeda dengan 
+implementasi quick and dirty tadi, maka berikut ini adalah kebutuhan minimal untuk library-library apa saja yang harus diinstall diluar 
+dari library-library yg berfungsi sebagai transpiler dan bundler. Berikut:
 
 **Kebutuhan Wajib**
 1. react

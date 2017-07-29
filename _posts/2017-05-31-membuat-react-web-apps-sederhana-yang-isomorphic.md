@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Membuat javascript web apps sederhana yang isomorphic
+title: Membuat react web apps sederhana yang isomorphic
 ---
 
 ## Apa itu javascript web apps yang isomorphic?

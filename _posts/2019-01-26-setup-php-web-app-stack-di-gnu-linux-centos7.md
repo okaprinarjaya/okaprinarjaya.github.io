@@ -25,7 +25,7 @@ Langkah - langkah instalasi:
 
 Langkah - langkah instalasi:
 
-1. Buat file bernama nginx.repo di `/etc/yum.repos.d/`
+1. Buat file bernama `nginx.repo` di `/etc/yum.repos.d/`
 
 2. Isi file nya berikut ini:
     ```text

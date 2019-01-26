@@ -34,6 +34,9 @@ load balancer (LB).
                                               |                  |
                                               +------------------+
 
+
+<!--more-->
+
 Pada diagram diatas, semua request dilewatkan ke mesin load-balancer (LB) yang mana mesin LB lah yang mendistribusikan 
 request ke salah satu web server dari 3 web server (election) di belakangnya. 
 
@@ -45,7 +48,7 @@ Solusinya adalah menggunakan 2 mesin LB. 1 mesin sebagai master LB, dan 1 mesin 
 menggunakan floating IP address mekanisme health checking untuk dapat memindahkan rute secara otomatis.
 
 ## Mulai membangun
-
+```text
                              +-----------------+
                              |                 |
                              |    WS LB 1      |                        +----------+
@@ -71,6 +74,7 @@ menggunakan floating IP address mekanisme health checking untuk dapat memindahka
                              | +-------------+ |                        +----------+
                              |                 |
                              +-----------------+
+```
 
 
 Pada diagram diatas, terlihat ditambahkan 1 mesin LB lagi dimana WS LB 1 adalah primary/master LB dan WS LB 2 adalah
@@ -79,3 +83,35 @@ load balancing diambil alih oleh WS LB 2.
 
 Masing - masing mesin LB menjalankan mekanisme health checking dimana mesin WS LB 2 "bertanya" ke mesin WS LB 1 dalam
 setiap periode waktu tertentu contoh: setiap 2 detik. 
+
+```text
+                             +-----------------+
+                             |                 |
+                             |    WS LB 1      |                        +----------+
+                             |                 |                        |          |
+                         +---> +-------------+ |                        |          |
+                         |   | |Health Check | |           +----------> |   WS 1   |
+                         |   | +-----------^-+ |           |            |          |
+                         |   |             |   |           |            +----------+
+                         |   +-----------------+           |
+                         |                 |               |            +----------+
+                         |                 |               |            |          |
+ Request   +-----------+ |                 |               |            |          |
++--------> |Floating IP+-+                 |               +----------> |   WS 2   |
+           +-----------+ |                 |               |            |          |
+                         |                 |               |            +----------+
+                         |   +-----------------+           |
+                         |   |             |   |           |
+                         |   |             |   |           |            +----------+
+                         |   |    WS LB 2  |   |           +----------> |          |
+                         |   |             |   |           |            |          |
+                         +---> +-----------v-+ +-----------+            |   WS 3   |
+                             | |Health Check | |                        |          |
+                             | +-------------+ |                        +----------+
+                             |                 |
+                             +-----------------+
+```
+
+### Bahan-bahan
+
+

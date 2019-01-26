@@ -14,9 +14,10 @@ Ada 2 pilihan populer untuk web server di lingkungan GNU/Linux yaitu:
 
 Langkah - langkah instalasi:
 
-1. sudo yum install httpd
-2. sudo systemctl start httpd
-3. sudo systemctl enable httpd
+1. `yum install httpd`
+2. `systemctl start httpd`
+3. `systemctl enable httpd`
+4. Pasti kita butuh engine PHP untuk dijalankan di Apache HTTPD Web Server ini. Maka dari itu, ikuti bagian tulisan dengan sub judul "Instalasi PHP 5.6 dan PHP FPM". Abaikan langkah instalasi *Konfigurasi PHP FPM*. Jadi, cukup sampai langkah ke-4 saja.
 
 <!--more-->
 
@@ -41,9 +42,9 @@ Langkah - langkah instalasi:
 
 5. `systemctl enable nginx`
 
-6. Jika butuh menjalankan PHP dengan web server NGINX maka ikuti bagian "Instalasi PHP 5.6 dan PHP FPM"
+6. Pasti tentunya kita butuh menjalankan PHP dengan web server NGINX. Maka dari ikuti bagian "Instalasi PHP 5.6 dan PHP FPM"
 
-### Instalasi PHP 5.6 dan PHP FPM
+## Instalasi PHP 5.6 dan PHP FPM
 
 Langkah - langkah instalasi: 
 
@@ -55,22 +56,24 @@ Langkah - langkah instalasi:
 
 4. `yum install php php-fpm php-devel php-pear php-mcrypt php-cli php-curl php-mysql php-ldap php-zip php-fileinfo -y`
 
-5. `vim /etc/php.ini`
+### Konfigurasi PHP FPM
+
+Langkah - langkah instalasi:
+
+1. `vim /etc/php.ini`
     
     Ubah nilai dari variabel `cgi.fix_pathinfo` menjadi bernilai 0 (noL). `cgi.fix_pathinfo=0`
 
-6. **Konfigurasi PHP FPM**
+2. `vim /etc/php-fpm.d/www.conf`, lalu edit baris-baris berikut:
+
+    * user = nginx
     
-    `vim /etc/php-fpm.d/www.conf`, lalu edit baris-baris berikut:
-        
-        * `user = nginx`
-        
-        * `group = nginx`
+    * group = nginx
 
-7. Konfigurasi NGINX untuk mengkonsumsi PHP-FPM sebagai fastcgi di /etc/nginx/conf.d/default.conf
+3. Konfigurasi NGINX untuk mengkonsumsi PHP-FPM sebagai fastcgi di /etc/nginx/conf.d/default.conf
 
-8. `systemctl restart nginx`
+4. `systemctl restart nginx`
 
-9. `systemctl start php-fpm`
+5. `systemctl start php-fpm`
 
-10. `systemctl enable php-fpm`
+6. `systemctl enable php-fpm`

@@ -10,6 +10,7 @@ lebih dari 1 web server dan database server. Ambil contoh untuk web server. Seba
 menggunakan 2 atau 3 web server. Yang mana semua request didistribusikan ke 2 atau 3 web server tersebut melalui mesin 
 load balancer (LB).
 
+```text
                                               +-----------------+
                                               |                 |
                                               |                 |
@@ -33,7 +34,7 @@ load balancer (LB).
                                               |                  |
                                               |                  |
                                               +------------------+
-
+```
 
 <!--more-->
 

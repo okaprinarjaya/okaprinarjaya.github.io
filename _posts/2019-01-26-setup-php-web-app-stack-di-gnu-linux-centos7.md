@@ -56,11 +56,15 @@ Langkah - langkah instalasi:
 4. `yum install php php-fpm php-devel php-pear php-mcrypt php-cli php-curl php-mysql php-ldap php-zip php-fileinfo -y`
 
 5. `vim /etc/php.ini`
+    
     Ubah nilai dari variabel `cgi.fix_pathinfo` menjadi bernilai 0 (noL). `cgi.fix_pathinfo=0`
 
 6. **Konfigurasi PHP FPM**
+    
     `vim /etc/php-fpm.d/www.conf`, lalu edit baris-baris berikut:
+        
         * `user = nginx`
+        
         * `group = nginx`
 
 7. Konfigurasi NGINX untuk mengkonsumsi PHP-FPM sebagai fastcgi di /etc/nginx/conf.d/default.conf

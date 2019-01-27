@@ -153,7 +153,9 @@ bahan-bahan sebagai berikut:
 
 2. Install paket **keepalived** melalui `yum` package manager di semua mesin LB. `yum install keepalived -y`
 
-3. Setelah instalasi `keepalived` selesai dan berhasil, maka akan tersedia file konfigurasinya di `/etc/keepalived/keepalived.conf`.
+3. Buat user baru dengan perintah: `sudo useradd -g users -M keepalived_script`
+
+4. Setelah instalasi `keepalived` selesai dan berhasil, maka akan tersedia file konfigurasinya di `/etc/keepalived/keepalived.conf`.
 
 #### Assign Floating IP di LB 1 / primary / master LB
 
@@ -200,8 +202,12 @@ perintah: `echo > keepalived.conf`. Biasanya mengosongkan file harus sebagai `ro
 baris-baris konfigurasi berikut ini:
 
 ```text
+global_defs {
+    enable_script_security
+}
+
 vrrp_script chk_haproxy {
-    script "pidof haproxy"
+    script "/usr/sbin/pidof haproxy"
     interval 2
 }
 
@@ -218,7 +224,7 @@ vrrp_instance VI_1 {
     
     authentication {
         auth_type PASS
-        auth_pass isiP@55wordSesukaHatiPilihaK4Mu
+        auth_pass isi_passwd_bebas_maks_8_karakter
     }
     
     track_script {
@@ -238,8 +244,12 @@ perintah: `echo > keepalived.conf`. Biasanya mengosongkan file harus sebagai `ro
 baris-baris konfigurasi berikut ini:
 
 ```text
+global_defs {
+    enable_script_security
+}
+
 vrrp_script chk_haproxy {
-    script "pidof haproxy"
+    script "/usr/sbin/pidof haproxy"
     interval 2
 }
 
@@ -256,7 +266,7 @@ vrrp_instance VI_1 {
     
     authentication {
         auth_type PASS
-        auth_pass isiP@55wordSesukaHatiPilihaK4Mu
+        auth_pass isi_passwd_bebas_maks_8_karakter
     }
     
     track_script {

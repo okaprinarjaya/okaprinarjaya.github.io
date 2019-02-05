@@ -177,7 +177,102 @@ Admin> LOAD MYSQL USERS TO RUNTIME;
 Admin> SAVE MYSQL USERS TO DISK;
 ```
 
+## ProxySQL sebagai Connection-pooling
 
+Pada dasarnya saat kamu menyelesaikan setup proxysql sebagai load-balancer, fitur connection pooling sudah aktif secara 
+otomatis. Dibuktikan dengan field bernama `max_connections` di table `mysql_servers` yang memiliki nilai default `1000`. 
+Yang artinya adalah total jumlah koneksi yang diterima oleh masing-masing backend adalah terbatas maksimal 1000 koneksi.
 
+### Mengontrol jumlah koneksi yang bersiaga (connection idle)
 
+Jumlah koneksi yang bersiaga (idle) ditentukan oleh variabel `mysql-free_connections_pct` di table `global_variables`. 
+
+```
+Admin> SELECT * FROM global_variables WHERE variable_name LIKE 'mysql-free_connections_pct';
++----------------------------+----------------+
+| variable_name              | variable_value |
++----------------------------+----------------+
+| mysql-free_connections_pct | 10             |
++----------------------------+----------------+
+1 row in set (0.00 sec)
+```
+
+Rumus yang digunakan untuk menentukan berapa jumlah koneksi yang akan bersiaga adalah sebagai berikut: 
+`(mysql-free_connections_pct * max_connections) / 100`. Contoh: Jika `mysql-free_connections_pct = 10`, dan 
+`max_connections = 1000`, maka `(10 * 1000) / 100 = 100 koneksi siaga`.
+
+Jika kamu ada merubah nilai dari variable `mysql-free_connections_pct` atau variabel-variabel lain apapun di table 
+`global_variables` maka kamu jangan lupa untuk jalankan perintah berikut:
+
+```
+Admin> LOAD MYSQL VARIABLES TO RUNTIME;
+
+Admin> SAVE MYSQL VARIABLES TO DISK;
+```
+
+### Workflow Connection-pooling
+
+* Sebuah sesi memerlukan sebuah koneksi ke server, maka bertanya ke connection-pool.
+
+* Jika ada koneksi di kumpulan koneksi untuk backend itu, koneksi itu digunakan, jika tidak, koneksi baru dibuat.
+
+* Ketika suatu sesi membebaskan koneksi, maka object koneksi dikirim kembali ke Hostgroup Manager. Jika Hostgroup Manager 
+  menentukan bahwa object koneksi aman untuk dibagikan dan connection-pool tidak penuh, maka object koneksi ditempatksan di 
+  connection-pool.
+
+* Jika suatu object koneksi dinilai tidak aman untuk dibagi, contoh: karena koneksi tersebut memuat session variables, 
+  temporary tables. Maka Hostgroup manager tidak menaruh object koneksi ke pool, tapi akan menghancurkan object koneksi 
+  tersebut.
+
+## Query Routing / Query Rules
+
+Query routing yang saya maksud adalah fitur proxysql untuk menentukan traffic query yg cocok dengan suatu akan dikirim ke 
+mesin-mesin yang dengan hostgroup yg sesuai dengan pola tersebut.
+
+Table yang berperan untuk melakukan query routing adalah table `mysql_query_rules`. Ada 6 utama field di table ini yang 
+harus diisi yaitu: `rule_id`, `active`, `username`, `match_digest`, `destination_hostgroup`, `apply`.
+
+Sebagai contoh kasus, saya butuh semua traffic query yang berisikan kata-kata `SELECT` diarahkan ke mesin-mesin yang 
+hostgroup id `2`. Untuk memastikan, lihat lagi field `hostgroup_id` di table `mysql_servers`.
+
+Untuk menyelesaikan contoh kasus diatas, maka kita input regex rule ke table `mysql_query_rules` dengan cara seperti berikut
+ini: 
+
+```
+Admin> INSERT INTO mysql_query_rules (rule_id,active,username,match_digest,destination_hostgroup,apply) VALUES (1,1,'asoygeboy','SELECT',2,1);
+```
+
+Karena informasi yang disimpan di field `match_digest` adalah berupa string regex, maka PASTIKAN regex kamu sudah valid dan 
+sesuai dengan yang dibutuhkan. Jika pola regex sudah valid dan sesuai maka jalankan perintah:
+
+```
+Admin> LOAD MYSQL QUERY RULES TO RUNTIME;
+```
+
+Dengan aktifnya query rules yang baru saja kita definisikan diatas, maka semua traffic query yg berupa SELECT akan diarahkan 
+ke hostrgroup id `2`.
+
+### Membuktikan hasil Query Routing / Rules
+
+Di sisi saya, saya melakukan test di database saya sendiri dengan nama database dan table yang saya susun sendiri. Jadi 
+tentunya hasil output tidak sama di sisi kamu.
+
+Log semua traffic query disimpan di table `stats_mysql_query_digest`. 
+
+```
+Admin> SELECT hostgroup, sum_time, count_star, digest_text FROM stats_mysql_query_digest WHERE digest_text LIKE '%tbl_satu%' ORDER BY sum_time DESC;
++-----------+----------+------------+-----------------------------------------------------------------+
+| hostgroup | sum_time | count_star | digest_text                                                     |
++-----------+----------+------------+-----------------------------------------------------------------+
+| 1         | 28825    | 2          | INSERT INTO tbl_satu VALUES (?, ?)                              |
+| 1         | 12280    | 2          | INSERT INTO `tbl_satu` (`id`, `tbl_satu_content`) VALUES (?, ?) |
+| 2         | 3424     | 4          | SELECT * FROM tbl_satu                                          |
+| 2         | 2095     | 3          | SELECT * FROM `tbl_satu` LIMIT ?,?                              |
+| 1         | 2054     | 1          | SHOW FULL COLUMNS FROM `tbl_satu` FROM `cooldb`                 |
+| 1         | 1014     | 2          | SHOW CREATE TABLE `tbl_satu`                                    |
++-----------+----------+------------+-----------------------------------------------------------------+
+```
+
+Perhatikan pada query `SELECT * FROM tbl_satu` dan `SELECT * FROM `tbl_satu` LIMIT ?,?`. Traffic query sudah berhasil 
+diarahkan ke hostgroup id `2`. Dan semua traffic query lainnya yang tidak sesuai dengan pola diarahkan ke hostgroup id `1`
 

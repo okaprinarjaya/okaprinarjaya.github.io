@@ -3,7 +3,7 @@ layout: post
 title: ProxySQL Sebagai MySQL Database Load-balancer, Connection-pooling, dan Query Routing
 ---
 
-Semua instalasi dan konfigurasi dilakukan di lingkungan sistem operasi GNU/Linux CentOS 7. Database yang saya gunanakan 
+Semua instalasi dan konfigurasi dilakukan di lingkungan sistem operasi GNU/Linux CentOS 7. Database yang saya gunakan 
 adalah MariaDB v.10.x terbaru dan sudah meng-aktifkan dan mengkonfigurasi fitur Galera Database Clustering. Tutorial ini 
 tidak membahas cara install dan konfigurasi MariaDB Clustering. Jadi, untuk dapat mengikuti tutorial ini, kamu sudah harus
 memiliki mesin-mesin yang sudah ter-install MariaDB, terkonfigurasi dan sudah ter-cluster dengan baik.
@@ -34,8 +34,8 @@ Berikut langkah - langkah instalasi ProxySQL:
 
 4. Login ke ProxySQL administration interface dengan perintah: `mysql -u admin -padmin -h 127.0.0.1 -P6032 --prompt='Admin> '`
 
-Jika kamu belum memiliki MySQL client (bukan MySQL server), maka bisa langsung install dengan perintah berikut `yum install mysql`. 
-Perintah tersebut menginstall HANYA mysql client bukan MySQL server.
+Jika kamu belum memiliki MySQL client (bukan MySQL server), maka bisa langsung install dengan perintah berikut 
+`yum install mysql`. Perintah tersebut menginstall HANYA mysql client bukan MySQL server.
 
 ## Konfigurasi monitoring
 
@@ -45,7 +45,7 @@ membuat user baru bernama `monitor` di sisi masing-masing database server (bukan
 
 Berikut langkah - langkah konfigurasi fungsi monitoring:
 
-#### Membuat user `monitor` di sisi masing-masing database server
+### Membuat user `monitor` di sisi masing-masing database server
 
 Login ke salah satu node di cluster database server kamu, lalu buatlah satu user baru bernama `monitor` dengan perintah 
 berikut: 
@@ -61,7 +61,7 @@ FLUSH PRIVILEGES;
 Karena kamu sudah menggunakan database server yang sudah ter-cluster, maka user `monitor` yang baru tersebut juga dibuat dan 
 tersedia di semua database server lainnya secara otomatis.
 
-#### Konfigurasi di sisi ProxySQL
+### Konfigurasi di sisi ProxySQL
 
 Di mesin ProxySQL, login ke ProxySQL administration interface dengan perintah berikut:
 
@@ -89,9 +89,9 @@ Admin> SAVE MYSQL VARIABLES TO DISK;
 
 Jadi, pastikan setiap melakukan perubahan pada table `global_variables` jangan lupa untuk menjalankan 2 perintah diatas.
 
-#### Mendaftarkan semua database server
+### Mendaftarkan semua database server di ProxySQL
 
-Setelah proses mendaftarkan user monitor beres, maka lanjutkan dengan mendaftar semua database server yang akan berada di 
+Setelah proses mendaftarkan user monitor beres, lalu lanjutkan dengan mendaftar semua database server yang akan berada di 
 belakang (backend servers) ProxySQL nantinya. Ikuti langkah-langkah berikut ini untuk menambahkan backend servers:
 
 ```
@@ -102,7 +102,7 @@ Admin> INSERT INTO mysql_servers(hostgroup_id,hostname,port) VALUES (1,'IP_ADDR_
 Admin> INSERT INTO mysql_servers(hostgroup_id,hostname,port) VALUES (1,'IP_ADDR_DB_NODE-3',3306);
 ```
 
-Check apakah semua server sudah berhasil didaftar dan masuk ke table `mysql_servers`. Berikut caranya:
+Check apakah semua server sudah berhasil didaftarkan dan masuk ke table `mysql_servers`. Berikut caranya:
 
 ```
 Admin> SELECT hostgroup_id, hostname, port, status FROM mysql_servers;
@@ -125,12 +125,58 @@ dari hasil output 2 perintah diatas, perhatikan pada kolom `connect_error` dan `
 bernilai `NULL` maka itu berarti ProxySQL berhasil berkomunikasi dengan semua database server yang ada di belakangnya dengan
 lancar.
 
-Lalu, selesai sudah bagian konfigurasi paling mendasar ini. Bagian ini adalah fondasi untuk bagian-bagian selanjut. Jadi
+Satu hal yang sangat penting untuk dicatat, monitoring dengan connect dan ping dilakukan berdasarkan isi dari table 
+`mysql_servers` TANPA perlu data di dalam table `mysql_servers` di-LOAD terlebih dahulu ke RUNTIME. Memang sengaja didesain
+seperti itu, karena dengan tanpa perlu LOAD terlebih dahulu ke RUNTIME, kita dapat melakukan basic health checks dulu 
+ke node / backend server yg baru yg ingin kita tambahkan sebelum benar-benar menambahkannya ke production.
+
+Jika ProxySQL sudah berhasil dan lancar berkomunikasi dengan backend servers, lalu jalankan perintah berikut ini untuk 
+mengaktifkan (LOAD) monitoring ke semua backend servers yg terdaftar secara permanen ke RUNTIME. Berikut perintahnya:
+
+```
+Admin> LOAD MYSQL SERVERS TO RUNTIME;
+
+Admin> SAVE MYSQL SERVERS TO DISK;
+```
+
+Dan, selesai sudah bagian konfigurasi paling mendasar ini. Bagian ini adalah fondasi untuk bagian-bagian selanjutnya. Jadi
 pastikan semua berfungsi dengan baik di bagian ini. Ok, mariii kita lanjutkan ke bagian-bagian selanjutnya!
 
 ## ProxySQL Sebagai Load-balancer
 
-Di system ProxySQL, table yang berperan sebagai fungsi load-balancer adalah table `mysql_servers` dan table ``
+Di system ProxySQL, table yang berperan sebagai fungsi load-balancer adalah table `mysql_servers` dan table `mysql_users`. 
+Table `mysql_servers` adalah table referensi untuk mendistribusikan traffic dan table `mysql_users` adalah table yang 
+menyimpan data-data authentication untuk digunakan login oleh ProxySQL ke salah satu backend servers sesuai informasi yang
+didapat dari table `mysql_servers`.
+
+### Menambahkan operational users di ProxySQL
+
+Operational user yang dimaksud adalah user yang digunakan untuk login ke semua backend servers. Dimana operational users ini
+akan melakukan semua kegiatan-kegiatan operasional seperti: INSERT, SELECT, DELETE, UPDATE, CREATE VIEW, CREATE TRIGGER,
+CREATE STORED PROCEDURE, dan lain-lain yang bersifat operasional data.
+
+Contoh: di dalam table `mysql_users` terdapat baris data dengan kolom `username` berisikan nilai `asoygeboy`, dan kolom 
+`password` berisikan nilai `xxx`. Maka nanti di aplikasi kita, setting database connection nya diarahkan ke 
+IP ProxySQL, Port: 6033, dengan username: `asoygeboy` dan password: `xxx`.
+
+Berikut caranya untuk menambahkan operational users:
+
+```
+Admin> INSERT INTO mysql_users(username,password,default_hostgroup) VALUES ('asoygeboy','xxx',1);
+```
+
+Field-field `username`, `password`, `default_hostgroup` adalah field-field yang paling penting untuk harus diisi. Penting 
+untuk dicatat dan dipahami, field `default_hostgroup` adalah field yang berperan sebagai penentu destinasi hostgroup default 
+yang akan dikirimkan traffic *JIKA* tidak ada *query rules / query routing* yang cocok. 
+
+Lalu, load configuration runtime untuk membuat konfigurasi ini aktif dan tetap ada aktif saat mesin restart. Berikut caranya:
+
+```
+Admin> LOAD MYSQL USERS TO RUNTIME;
+
+Admin> SAVE MYSQL USERS TO DISK;
+```
+
 
 
 

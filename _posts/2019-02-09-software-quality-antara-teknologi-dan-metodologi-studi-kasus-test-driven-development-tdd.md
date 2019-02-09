@@ -6,7 +6,7 @@ title: Software Quality, Antara Teknologi dan Metodologi. Studi kasus, Test Driv
 ## Awalan
 
 Berbicara tentang teknologi dan metodologi memang merupakan 2 hal yang sangat berbeda. Dan 2 hal ini sangat erat kaitannya 
-sebagai fondasi untuk menuju yang namanya software quality. Pemilihan technology dan methodology yang tepat, pastinya 
+sebagai fondasi untuk menuju yang namanya software quality. Pemilihan teknologi dan metodologi yang tepat, pastinya 
 mempengaruhi seberapa berkualitas software yang kita bangun.
 
 Dalam pandangan awam saya, tanpa survey, dan tanpa data dan karena saya adalah seseorang yang dengan literasi jongkok, ya saya malas membaca, kalau pun saya membaca saya biasanya membaca buku yang berjenis resep (cookbook). Jadi saya bermodalkan 
@@ -19,7 +19,7 @@ tertentu pada proses pengembangan produk-produk mereka. Dengan harapan dapat men
 Teknologi? Tidak usah ditanya lagi, orang-orang kita sudah sejak lama dan sudah banyak yang jago dalam hal implementasi 
 teknolog-teknologi terbaru. Mmmmmmmm...ternyata kualitas produk yang dihasilkan pun dinilai masih kurang OK. Walaupun sudah 
 menggunakan teknolog-teknologi baru sekalipun. Ya..saya akui memang, OK atau kurang OK itu relatif. Dan, apakah implementasi
-suatu methodology baru akan menjamin meningkatnya kualitas produk? Ya! Tentu saja! Tentu saja tidak bisa dipastikan juga 
+suatu metodologi baru akan menjamin meningkatnya kualitas produk? Ya! Tentu saja! Tentu saja tidak bisa dipastikan juga 
 apakah akan meningkat atau malah menurun. Hahahahaha...
 
 Tapi, ingat metodologi juga amat sangat **PENTING** sama halnya seperti teknologi dan malah **lebih** berpengaruh dalam 
@@ -45,7 +45,7 @@ tinggalkan, lalu teknologi itu akan bekerja dengan sendirinya.
 
 Tidak, metodologi tidak bisa seperti teknologi. Metodologi **HANYA** bisa bergerak / berjalan oleh atau melalui orang / 
 seseorang / "peoples" gtu bahasa zimbabwe nya. Metodologi itu tertanam di dalam diri seseorang itu. Jadi orang itulah yang
-menyebabkanbuat suatu metodologi itu dapat bergerak / berjalan terus.
+menyebabkan suatu metodologi itu dapat bergerak / berjalan terus.
 
 ## Teknologi dan Metodologi
 
@@ -161,14 +161,14 @@ orang itu meyakini, "mengimani" metodologi ini.
 
 Sebagai contoh, Pernah saya mendengar dari beberapa kawan-kawan seprofesi, `"Klo nerapin coding dng TDD, cukup tulis tests utk controller aja, atau model aja, atau view aja."`. Pendapat beberapa kawan-kawan saya itu intinya memberitahu bahwa
 kita bisa memilih layer-layer mana saja dari app-stack kita yang mau ditest dan layer-layer mana yang tidak mau ditest.
-Ya, saya setuju, tidak ada salah dengan itu. 
+Ya, saya setuju, tidak ada yang salah dengan hal itu. 
 
 Tapi, mari kita lihat kembali intisari TDD itu sendiri. Menurut saya pribadi, jika kita sudah mengimplementasikan TDD, maka 
 seharusnya kita mendapatkan benefit-benefit **minimal** berikut ini: 
 
 1. Menemukan bugs dengan lebih cepat
 
-2. Locking, Mengamankan logic, algoritma, dan peraturan-peraturan yang kita dalam untaian source code dari app kita.
+2. Locking / Mengamankan logic, algoritma, dan peraturan-peraturan yang kita susun dalam untaian source code dari software kita.
 
    Komputer punya antivirus untuk mengamankan, server-server punya firewall untuk mengamankan, rumah punya cctv dan satpam 
    untuk mengamankan. Tapi, logic / algoritma / rules kita siapa yang menjaga / mengamankan? Ya, unit tests kita lah yang menjaga dan mengamankan logic / algoritma / rules kita.

@@ -71,6 +71,10 @@ jawabannya **SULIT**. Karena metodologi itu akan merubah **paradigma**, **pola p
 hal lain yang bersifat psikologis yang dipaksa harus diubah. Banyak orang-orang yang **mungkin** akan merasa **kesal**, 
 dan **terbebani** dan bahkan **gila**. Hahahahaha... itu yang terakhir saya ber-lebay ria aja kok...#JustKidding.
 
+Tidak ada support service yang bisa ditelpon untuk mendapatkan bantuan menangani masalah. Karena jika ditemukan / menghadapi
+suatu masalah saat penerapan suatu metodologi, solusinya dicari dengan duduk bareng dengan semua orang yang terlibat di dalam 
+suatu kelompok.
+
 ### Implementasi Teknologi
 
 Nah ini, ini merupakan hal yang menyenangkan bagi setiap software engineer. Saya dan **mungkin** banyak teman-teman software
@@ -92,6 +96,59 @@ antusias dengan penerapan teknologi-teknologi baru.
 ## Metodologi: Test Driven Development (TDD)
 
 Ok, di bagian ini dari tulisan ini saya awali dengan dua pertanyaan: `"Mengapa tidak banyak orang yang gatel dengan software quality?"`, `"Mengapa orang-orang lebih banyak yang gatel dengan teknologi baru?"`.
+
+Ya, TDD adalah suatu metodologi. Metdologi pengembangan software yang ber-orientasi test sederhananya saya sebagai seorang 
+programmer disetir / diatur-atur oleh suatu kumpulan test cases (unit case) untuk membuat suatu real implementasi. Jadi,
+sebelum membuat real implementasinya, saya diwajibkan untuk memulai dengan membuat semua test cases nya terlebih dahulu.
+
+Setahu saya, metodologi ini memang mengesalkan bagi mayoritas software engineer dan bahkan saya pun juga merasa kesal dengan 
+metodologi ini. Dulu tapi. Karena TDD memaksa saya untuk menulis test cases terlebih dahulu sebelum membuat real implementasi 
+dari suatu modul / komponen dari produk yg saya kembangkan.
+
+OMG! bayangkan! saya dipaksa untuk mengkhayal tanpa ada visual / output apapun. Dipaksa untuk menentukan / mendetermine / 
+mendefinisikan apa-apa saja sebenarnya yang saya butuhkan untuk mengimplementasikan requirements dari orang-orang product di 
+sana. Aannjayyy capek! pegel! linu! kepala cekot2! pacar marah2! untung saja tidak sampai diputusin. 
+
+### Software Quality dengan TDD (atau metodologi apapun)
+
+Di tulisan saya ini tidak mau menjelaskan panjang lebar apa itu TDD karena sudah banyak sekali artikel-artikel yang jauh lebih
+berkualitas untuk menjelaskan secara detail tentang TDD. Tujuan saya di tulisan ini adalah mengajak kawan-kawan semuanya
+untuk mulai "gatel" dikit (dikit aja) juga dengan yg namanya software quality melalui penerapan TDD. Karena saya pun 
+baru-baru aja "gatel" dng metodologi ini. Hahahahaha....
+
+Sebagai contoh sederhana, kita ambil contoh Kafka. di infrastruktur kita belum ada yang namanya teknologi [https://kafka.apache.org/](Kafka). 
+Situasinya di infrastruktur kita sudah ada [https://www.rabbitmq.com/](RabbitMQ). **Disclaimer: ini sebagai contoh saja. Maafkan jika pemahaman saya terhadap RabbitMQ dan Kafka kurang benar atau malah sama sekali gak benar**.
+Suatu hari terdengarlah kabar ke para tech-big-boss di perusahaan tempat kita bekerja. Mereka mendengar ada suatu teknologi 
+baru yang bernama Kafka yang katanya bisa membantu meningkatkan kualitas produk dari sisi blablablablablablablabla. Brosurnya
+Kafka menjanjikan blablablablablablabla beuhh maniss banget kalimat-kalimat dalam brosurnya. Dan, tech-big-bossess pun "gatel"
+/ tertarik untuk mencoba implementasi si Kafka ini. Dalam benak mereka dengan penerapan teknologi Kafka ini berharap kualitas
+produk bisa meningkat dari sisi speed of delivery, reliability of service, dan lain-lain seperti yang dibilang di brosur.
+
+Selain tech-big-bosses, VP, tech lead beserta serdadu-serdadunya pun setuju dan excited. Mereka semua meyakini, jika 
+dianalogikan seperti agama, mereka semua "mengimani" nya. Meyakini dan "mengimani" nya bahwa ini teknologi Kafka dapat 
+membantu mereka untuk meningkatkan kualitas produk. Mereka ngoprekin teknologi dengan penuh antusias, dan semangat.
+
+Tapi, apakah setelah penerapan teknologi Kafka itu kualitas produk benar meningkat? apakah kemudahan development benar menjadi
+lebih mudah? apakah reliability service kita benar meningkat? **TAPI** meningkat atau pun tidak meningkat, biasanya saya 
+tidak peduli (karena saya juga bagian / termasuk salah satu dari mereka). Saya akan terus semangat ngoprekin itu teknologi
+dengan harapan jika saya resign dari current company, di perusahaan baru gaji saya meningkat drastis oleh karena punya
+pengalaman yang cukup lama di teknologi Kafka. Ya! itu wajar, saya setuju. Tidak ada yang salah dengan itu.
+
+Naaahhhh, pertanyaannya, mengapa kita tidak pernah begitu excited / meyakini / "mengimani" dengan penerapan metodologi TDD?
+Di tulisan ini saya sama sekali tidak membela TDD, saya bukan pejuang TDD. Saya tidak menentang metodologi-metodologi yang
+lainnya. Apapun itu metodologinya, silahkan, saya dukung 100%. Mau TDD, mau BDD, mau DDD, mau kombinasi TDD + BDD, BDD + DDD
+atau apapun itu, silahkan. Yang penting itu bukan FDD (Fear Driven Develomnet) Hahahahahaha... Anggap saja TDD itu layaknya
+seperti kita memilih Kafka. Ya karena banyak ada teknologi lain yang sama fungsinya seperti Kafka. Tapi kenapa kita pilih
+Kafka? Yaa karena ada pilihan yang harus dipilih, ya tinggal dipilih. Kita pilih Kafka, done! Kita pilih TDD done! bukankah
+begitu?
+
+Concern saya adalah mari yuk bareng-bareng kita mulai "gatel" dengan salah satu dari sekian banyak metodologi itu. Mulai 
+meyakininya, "mengimani" nya seperti hal nya antusiasme kita terhadap teknologi. Ikuti dengan antusias semua 
+prinsip-prinsipnya, dan values nya. Temukan pola-polanya, diskusi duduk bareng untuk setiap masalah yang ditemui karena 
+setahu tidak ada customer service yang bisa dihubungi jika ada masalah dalam proses suatu penerapan metodologi.
+
+### Tolok ukur kesuksesan implementasi metodologi TDD (atau metodologi apapun)
+
 
 
 

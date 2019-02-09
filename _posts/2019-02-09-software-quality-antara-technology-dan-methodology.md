@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Software Quality: Antara Tekologi dan Metodologi
+title: Software Quality, Antara Tekologi dan Metodologi
 ---
 
 ## Awalan

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Software Quality, Antara Tekologi dan Metodologi
+title: Software Quality, Antara Tekologi dan Metodologi. Studi kasus, Test Driven Development (TDD)
 ---
 
 ## Awalan
@@ -59,6 +59,16 @@ Tapi, jika saya ditanya "teknologi apa yang kamu gunakan dalam pengembangan pera
 Windows, Vim, Jetbrains, ReactJs, Kotlin, Apache, NginX, ..................... jadi ampe lupa nanyain pacar udah maem / mandi 
 blomm". Hahahaha ya mungkin seperti itu.
 
-//
+### Implementasi Metodologi
+
+Kapan dan dimana suatu metodologi diterapkan? Menurut saya pribadi, suatu metodologi diterapkan di suatu kelompok orang yang 
+dimana di dalam kelompok itu jumlah orang-orang nya sudah sangat banyak. Menurut saya, jarang ada untuk implementasi 
+suatu metodologi di personal / single performer. Ya walaupun ada, mungkin saja orang itu sudah kebiasaan bekerja dng suatu
+metodologi itu karena sebelumnya berasal dari suatu kelompok yang menerapkan suatu metodologi itu juga sebelumnya.
+
+Nah, bagaimana penerapannya? **Sulit** kah?, atau **Mudah** kah?, atau *Sulit-sulit-mudah* kah? Menurut saya pribadi,
+jawabannya **SULIT**. Karena metodologi itu akan merubah **paradigma**, **pola pikir**, **kebiasaan**, **gaya**, dan banyak
+hal lain yang bersifat psikologis yang dipaksa harus diubah. Banyak orang-orang akan merasa **kesal**, **terbebani**, 
+
 
 

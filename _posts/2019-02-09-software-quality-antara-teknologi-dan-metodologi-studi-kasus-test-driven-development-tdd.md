@@ -116,8 +116,8 @@ berkualitas untuk menjelaskan secara detail tentang TDD. Tujuan saya di tulisan 
 untuk mulai "gatel" dikit (dikit aja) juga dengan yg namanya software quality melalui penerapan TDD. Karena saya pun 
 baru-baru aja "gatel" dng metodologi ini. Hahahahaha....
 
-Sebagai contoh sederhana, kita ambil contoh Kafka. di infrastruktur kita belum ada yang namanya teknologi [https://kafka.apache.org/](Kafka). 
-Situasinya di infrastruktur kita sudah ada [https://www.rabbitmq.com/](RabbitMQ). **Disclaimer: ini sebagai contoh saja. Maafkan jika pemahaman saya terhadap RabbitMQ dan Kafka kurang benar atau malah sama sekali gak benar**.
+Sebagai contoh sederhana, kita ambil contoh Kafka. di infrastruktur kita umpamanya belum ada yang namanya teknologi [Kafka](https://kafka.apache.org/). 
+Umpamanya, situasinya di infrastruktur kita sudah ada [RabbitMQ](https://www.rabbitmq.com/). **Disclaimer: ini sebagai contoh saja.**.
 Suatu hari terdengarlah kabar ke para tech-big-boss di perusahaan tempat kita bekerja. Mereka mendengar ada suatu teknologi 
 baru yang bernama Kafka yang katanya bisa membantu meningkatkan kualitas produk dari sisi blablablablablablablabla. Brosurnya
 Kafka menjanjikan blablablablablablabla beuhh maniss banget kalimat-kalimat dalam brosurnya. Dan, tech-big-bossess pun "gatel"

@@ -183,6 +183,37 @@ seharusnya kita mendapatkan benefit-benefit **minimal** berikut ini:
 Jika kita sudah merasakan minimal 4 benefit-benefit diatas, maka saya pribadi berani bilang bahwa implementasi TDD kita sudah
 pas dan efektif.
 
+Kembali ke masalah tentang layer-layer mana saja yang kita pilih untuk ditests dan harus seberapa dalam unit tests kita. 
+Sederhana saja menurut saya, Jika unit tests yang kita tulis belum bisa memberikan kita benefit-benefit diatas, maka ada yg 
+salah dengan keputusan kita saat menentukan layer-layer mana saja yang perlu ditest.
+
+Nah, seberapa dalam seharusnya unit tests kita? Itu kembali lagi ke diri kita dan ke leader kita. Seberapa dalam unit tests
+kita adalah **tergantung seberapa puas, seberapa confidence, seberapa yakin kmu dan leader kamu, bahwa SEMUA logic, algoritma,rules sudah locked semua.**
+
+#### Lines coverage?
+
+Menurut saya pribadi, lines coverage juga bagian yang penting dari penulisan unit tests, tapi bukan yang utama. Bagi saya 
+pribadi lines coverage membantu kita untuk mempermudah kita mengidentifikasi kira-kira rules / logic mana yang belum di-lock. 
+Tapi, jangan sekali-kali terlena atau terlalu bangga dengan lines coverage yang sudah mencapai nilai persentase yang tinggi. 
+Karena komputer itu bodoh. Kita lah programmer / engineer sebenarnya yang pintar. Kita yang menyusun semuanya jadi seharusnya kita yang paling lebih tahu apa yang kita kerjakan.
+
+## Honestly...
+
+Saya:
+
+1. Bukan pembela TDD
+
+2. Bukan pejuang TDD
+
+3. Bukan ahli TDD
+
+4. Baru-baru aja "gatel" dengan TDD
+
+5. Sudah sedang belajar implementasi TDD bersama beberapa kawan
+
+Dan, tulisan ini sama sekali tidak bermaksud untuk mengajari / menggurui orang-orang. Saya hanya menyampaikan point of view 
+saya dan kata idola saya, menulis dan menceritakan ulang apa yang sedang kamu pelajari adalah cara yang jitu untuk kamu agar 
+bisa dengan cepat menguasai sesuatu itu.
 
 
 

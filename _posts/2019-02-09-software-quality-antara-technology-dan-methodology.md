@@ -25,6 +25,8 @@ apakah akan meningkat atau malah menurun. Hahahahaha...
 Tapi, ingat metodologi juga amat sangat **PENTING** sama halnya seperti teknologi dan malah **lebih** berpengaruh dalam 
 peningkatan kualitas dibandingkan teknologi.
 
+<!--more-->
+
 ## Teknologi
 
 Dalam sudut pandang awam saya pribadi, teknologi itu adalah alat yang bersifat teknis untuk mengimplementasikan suatu tujuan
@@ -32,7 +34,7 @@ Dalam sudut pandang awam saya pribadi, teknologi itu adalah alat yang bersifat t
 perangkat keras dan lunak.
 
 Suatu alat ada cara pakainya, ada buku manualnya, ada langkah-langkah penggunaannya yang dinomerin dari nomer `1`... `x`. 
-Saat apa yang kita ikuti dalam buku manual tidak ber-efek, maka tinggal telpon provider dari penyedia alat tersebut.
+Saat apa yang kita ikuti dalam buku manual tidak ber-efek, maka tinggal telpon support service vendor dari alat tersebut.
 
 ## Metodologi
 
@@ -47,8 +49,16 @@ menyebabkanbuat suatu metodologi itu dapat bergerak / berjalan terus.
 
 ## Teknologi dan Metodologi
 
+Saya adalah seorang software engineer. Jika ditanya oleh seseorang lain, "metodologi apa yang kamu terapkan dalam 
+pengembangan perangkat lunak kamu?". Ya, saya dan **mungkin** kebanyakan teman-teman software engineer lain juga akan menjawab
+"ennggg...mmmmm........... ngg nganuu keramm eh sekram ehh SCRUM kali yaaa". Hahahaha ya mungkin seperti itu.
 
+Tapi, jika saya ditanya "teknologi apa yang kamu gunakan dalam pengembangan perangkat lunak kamu?". Ya, tanpa 
+"ang..ing..eng..", biasanya saya dan **mungkin** juga teman-teman software engineer lainnya akan menjawab 
+"saya menggunakan PHP, MySQL, Java, Golang, PostgreSQL, MongoDB, Cassandra, Kafka, RabbitMQ, Redis, Load Balancer, Linux, 
+Windows, Vim, Jetbrains, ReactJs, Kotlin, Apache, NginX, ..................... jadi ampe lupa nanyain pacar udah maem / mandi 
+blomm". Hahahaha ya mungkin seperti itu.
 
-
+//
 
 

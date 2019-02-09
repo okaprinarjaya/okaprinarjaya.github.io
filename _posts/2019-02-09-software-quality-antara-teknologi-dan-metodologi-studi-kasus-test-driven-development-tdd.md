@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Software Quality, Antara Tekologi dan Metodologi. Studi kasus, Test Driven Development (TDD)
+title: Software Quality, Antara Teknologi dan Metodologi. Studi kasus, Test Driven Development (TDD)
 ---
 
 ## Awalan

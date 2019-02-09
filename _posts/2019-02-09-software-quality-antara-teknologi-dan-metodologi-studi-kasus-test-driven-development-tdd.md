@@ -66,9 +66,36 @@ dimana di dalam kelompok itu jumlah orang-orang nya sudah sangat banyak. Menurut
 suatu metodologi di personal / single performer. Ya walaupun ada, mungkin saja orang itu sudah kebiasaan bekerja dng suatu
 metodologi itu karena sebelumnya berasal dari suatu kelompok yang menerapkan suatu metodologi itu juga sebelumnya.
 
-Nah, bagaimana penerapannya? **Sulit** kah?, atau **Mudah** kah?, atau *Sulit-sulit-mudah* kah? Menurut saya pribadi,
+Nah, bagaimana penerapannya? **Sulit** kah?, atau **Mudah** kah?, atau **Sulit-sulit-mudah** kah? Menurut saya pribadi,
 jawabannya **SULIT**. Karena metodologi itu akan merubah **paradigma**, **pola pikir**, **kebiasaan**, **gaya**, dan banyak
-hal lain yang bersifat psikologis yang dipaksa harus diubah. Banyak orang-orang akan merasa **kesal**, **terbebani**, 
+hal lain yang bersifat psikologis yang dipaksa harus diubah. Banyak orang-orang yang **mungkin** akan merasa **kesal**, 
+dan **terbebani** dan bahkan **gila**. Hahahahaha... itu yang terakhir saya ber-lebay ria aja kok...#JustKidding.
+
+### Implementasi Teknologi
+
+Nah ini, ini merupakan hal yang menyenangkan bagi setiap software engineer. Saya dan **mungkin** banyak teman-teman software
+engineer lainnya biasanya **gatel** icip-icip teknologi baru. Aahhh...rasanya kereennnn bangettt bisa menguasai suatu 
+teknologi baru. Rasanya cewek-cewek di ruangan semuanya melirik ke kamu memandang kamu betapa kerennya kamu. Hahaha ya,
+karena saya seorang pria. 
+
+Hhhmmmm...menguasai? wait..wait..menguasai? Beneran sudah menguasai? Atau hanya sekedar download, install, konfigurasi? 
+Ya, memang semudah itu untuk implementasi suatu teknologi. Saya tidak perlu lagi menanyakan **Sulit** kah?, atau **Mudah** 
+kah?, atau **Sulit-sulit-mudah** kah?. Apa sulitnya? tinggal download, install, konfigurasi. Lalu, tinggal lempar saja ke 
+divisi infrastruktur dan biarkan kawan-kawan di divisi infrastuktur *do their job* sampai puyeng tujuh keliling untuk 
+memelihara "mahluk-mahluk" itu. Tidak akan ada **paradigma, pola pikir, kebiasaan, dan gaya** yang akan berubah. Pastinya
+semua orang akan nyaman2 aja dan setuju.
+
+Hey! sabarrr..sabarr..saya sama sekali tidak bermaksud menentang niatan teman-teman sejawat / seprofesi dengan niatannya 
+berkontribusi untuk meningkatkan kualitas produk dengan cara menerapkan teknologi-teknologi baru. Saya juga sama sangat
+antusias dengan penerapan teknologi-teknologi baru. 
+
+## Metodologi: Test Driven Development (TDD)
+
+Ok, di bagian ini dari tulisan ini saya awali dengan dua pertanyaan: `"Mengapa tidak banyak orang yang gatel dengan software quality?"`, `"Mengapa orang-orang lebih banyak yang gatel dengan teknologi baru?"`.
+
+
+
+
 
 
 

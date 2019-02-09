@@ -5,15 +5,15 @@ title: Software Quality, Antara Teknologi dan Metodologi. Studi kasus, Test Driv
 
 ## Awalan
 
-Berbicara tentang teknology dan metodologi memang merupakan 2 hal yang sangat berbeda. Dan 2 hal ini sangat erat kaitannya 
+Berbicara tentang teknologi dan metodologi memang merupakan 2 hal yang sangat berbeda. Dan 2 hal ini sangat erat kaitannya 
 sebagai fondasi untuk menuju yang namanya software quality. Pemilihan technology dan methodology yang tepat, pastinya 
 mempengaruhi seberapa berkualitas software yang kita bangun.
 
-Dalam pandangan awam saya, tanpa survey, dan tanpa data dan karena saya seseorang yang dengan literasi jongkok, jadi saya 
-bermodalkan kondisi sedang mabuk untuk menulis artikel ini. Di sebelah saya ada satu kerat teh botol. Ya mabuk teh botol. 
+Dalam pandangan awam saya, tanpa survey, dan tanpa data dan karena saya adalah seseorang yang dengan literasi jongkok, ya saya malas membaca, kalau pun saya membaca saya biasanya membaca buku yang berjenis resep (cookbook). Jadi saya bermodalkan 
+kondisi sedang mabuk untuk menulis artikel ini. Di sebelah saya ada satu kerat teh botol. Ya mabuk teh botol. 
 
 Di Indonesia, khususnya di perusahaan-perusahaan berbasis dan memang teknologi sebagai tulang punggungnya, para lord nya 
-(orang-orang di level management teratas) sudah mulai melirik, mempertimbangkan mengimplementasikan suatu methodology 
+(orang-orang di level management teratas) sudah mulai melirik, mempertimbangkan mengimplementasikan suatu metodologi 
 tertentu pada proses pengembangan produk-produk mereka. Dengan harapan dapat meningkatkan kualitas produk.
 
 Teknologi? Tidak usah ditanya lagi, orang-orang kita sudah sejak lama dan sudah banyak yang jago dalam hal implementasi 
@@ -97,7 +97,7 @@ antusias dengan penerapan teknologi-teknologi baru.
 
 Ok, di bagian ini dari tulisan ini saya awali dengan dua pertanyaan: `"Mengapa tidak banyak orang yang gatel dengan software quality?"`, `"Mengapa orang-orang lebih banyak yang gatel dengan teknologi baru?"`.
 
-Ya, TDD adalah suatu metodologi. Metdologi pengembangan software yang ber-orientasi test sederhananya saya sebagai seorang 
+Ya, TDD adalah suatu metodologi. Metodologi pengembangan software yang ber-orientasi test sederhananya saya sebagai seorang 
 programmer disetir / diatur-atur oleh suatu kumpulan test cases (unit case) untuk membuat suatu real implementasi. Jadi,
 sebelum membuat real implementasinya, saya diwajibkan untuk memulai dengan membuat semua test cases nya terlebih dahulu.
 
@@ -149,8 +149,39 @@ setahu tidak ada customer service yang bisa dihubungi jika ada masalah dalam pro
 
 ### Tolok ukur kesuksesan implementasi metodologi TDD (atau metodologi apapun)
 
+Menurut pendapat saya pribadi, tidak ada rumus untuk mengukur sudah seberapa bagus penerapan TDD di lingkungan kita? Karena
+kembali lagi ke pengertian apa itu metodologi. Seperti yang sudah saya tulis di bagian sebelumnya di tulisan ini, 
+metodologi itu tertanam di dalam diri orang-orang itu.
 
+#### Apakah implementasi TDD saya sudah pas dan efektif?
 
+Saya lebih prefer / memilih kata `pas`. Karena jika saya menggunakan kata `tepat`, maka saya sudah menjadi orang terlalu 
+naif. Bagaimana? apakah sudah pas dan efektif?. Nah, itu kembali lagi ke orang yang menjalani metodologi ini. Seberapa besar 
+orang itu meyakini, "mengimani" metodologi ini. 
+
+Sebagai contoh, Pernah saya mendengar dari beberapa kawan-kawan seprofesi, `"Klo nerapin coding dng TDD, cukup tulis tests utk controller aja, atau model aja, atau view aja."`. Pendapat beberapa kawan-kawan saya itu intinya memberitahu bahwa
+kita bisa memilih layer-layer mana saja dari app-stack kita yang mau ditest dan layer-layer mana yang tidak mau ditest.
+Ya, saya setuju, tidak ada salah dengan itu. 
+
+Tapi, mari kita lihat kembali intisari TDD itu sendiri. Menurut saya pribadi, jika kita sudah mengimplementasikan TDD, maka 
+seharusnya kita mendapatkan benefit-benefit **minimal** berikut ini: 
+
+1. Menemukan bugs dengan lebih cepat
+
+2. Locking, Mengamankan logic, algoritma, dan peraturan-peraturan yang kita dalam untaian source code dari app kita.
+
+   Komputer punya antivirus untuk mengamankan, server-server punya firewall untuk mengamankan, rumah punya cctv dan satpam 
+   untuk mengamankan. Tapi, logic / algoritma / rules kita siapa yang menjaga / mengamankan? Ya, unit tests kita lah yang menjaga dan mengamankan logic / algoritma / rules kita.
+
+3. Kemudahan dalam mengidentifikasi / determining bagian-bagian mana yang ternyata perlu direfactor
+
+4. Kepercayaan diri
+
+   Ada suatu referensi / evidence yang membuat kita percaya diri dengan software yang kita tulis lalu deliver. Apa 
+   referensinya / evidence nya? Ya itu, unit tests kita.
+
+Jika kita sudah merasakan minimal 4 benefit-benefit diatas, maka saya pribadi berani bilang bahwa implementasi TDD kita sudah
+pas dan efektif.
 
 
 

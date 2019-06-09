@@ -77,3 +77,7 @@ Langkah - langkah instalasi:
 5. `systemctl start php-fpm`
 
 6. `systemctl enable php-fpm`
+
+## MariaDB RDBMS
+
+

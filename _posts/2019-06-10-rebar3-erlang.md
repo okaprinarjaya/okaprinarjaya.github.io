@@ -27,6 +27,8 @@ $ cd your_app_name
 Kita pilih pembuatan HTTP JSON API sebagai contoh hasil project. Library web server yang kita gunakan adalah [Cowboy](https://www.digitalocean.com/docs/networking/floating-ips/quickstart/) , dan library
 untuk handle JSON nya kita menggunakan [Jiffy](https://github.com/davisp/jiffy) . 
 
+<!--more-->
+
 Buka file `rebar.config` tambahkan library dependencies ke section `deps`. Dan tambahkan plugins `rebar3_run` di section `plugins`
 
 ```erl
